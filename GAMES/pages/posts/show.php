@@ -11,12 +11,20 @@ $app->setTitle($post->titre);
 ?>
 
 <div class="single">
-	<h4><?= $post->titre; ?></h4>
-	<hr>
-	<span>Platform : <a href="?p=posts.category&id=<?= $cat->id; ?>"><?= $post->categorie; ?></a></span>
-	<img src="<?= $img = (empty($post->img)) ? "./img/default.jpg" : $post->img; ?>" alt="<?= $post->titre; ?>">
-	<p><?= $post->contenu; ?></p>
-	<button class="acheter">
-		Acheter
-	</button>
+	<div class="head" style="
+							background: url(<?= $img = (empty($post->img)) ? "./img/default.jpg" : $post->img; ?>);
+							background-size: cover;
+							background-repeat: no-repeat;
+							background-position: 50% 50%;">
+		<h4><?= $post->titre; ?></h4>
+		<hr>
+		<span>Platform(s) : <a href="?p=posts.category&id=<?= $cat->id; ?>"><?= $post->categorie; ?></a></span>
+		<button class="acheter">
+			Acheter
+		</button>
+	</div>
+	<div class="desc">
+		<h5>Description :</h5>
+		<p><?= $post->contenu; ?></p>
+	</div>
 </div>

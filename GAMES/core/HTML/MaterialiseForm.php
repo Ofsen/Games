@@ -9,7 +9,7 @@ class MaterialiseForm extends Form {
 	 */
 
 	protected function surround($html) {
-		return "<div class=\"input-field col s6\">{$html}</div>";
+		return "<div class=\"input-field\">{$html}</div>";
 	}
 
 	/**
@@ -26,15 +26,7 @@ class MaterialiseForm extends Form {
 		} else {
 			$input = '<input id="' . $name . '" name="' . $name . '" type="' . $type . '" class="validate" value="' . $this->getValue($name) . '">';
 		}
-		return $this->surround(
-			'<div class="row">
-				<div class="input-field col s12 m12 l12">'
-					
-				. $input . ' ' . $label .
-					
-				'</div>
-			</div>'
-		);
+		return $this->surround($label . $input);
 	}
 
 	public function select($name, $label, $options) {

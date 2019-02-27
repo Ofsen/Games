@@ -1,3 +1,22 @@
+<?php
+if(!empty($_POST)) {
+	$auth = new \Core\Auth\DBAuth(App::getInstance()->getDb());
+	if($auth->login($_POST['username'], $_POST['password'])) {
+		header('Location:admin.php');
+	} else {
+		?>
+		
+		<div class="card-panel red lighten-2">
+			Nom d'utilisateur ou mot de passe incorrecte.
+		</div>
+
+		<?php
+	}
+}
+$form = new \Core\HTML\MaterialiseForm($_POST);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +29,7 @@
     <link href="../public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+	<div id="black"> </div>
 	<div class="header">
 		<div class="container">
 			<div class="logo">
@@ -36,7 +56,7 @@
 					<li><a class="blue-bg" href="index.php?p=logout">Se Déconnecter</a></li>
 					<?php } else { ?>
 					<li><a href="#">S'inscrire</a></li>
-					<li><a class="blue-bg" href="index.php?p=login">Se Connecter</a></li>
+					<li><a class="blue-bg" href="#" onclick="document.getElementById('login').style.display='block';document.getElementById('black').style.display='block'">Se Connecter</a></li>
 					<?php } ?>
 				</ul>
 			</div>
@@ -49,6 +69,19 @@
 
 	<div class="footer">
 		Build with <i class="fas fa-heart"></i> by <a href="http://github.com/ofsen">@ofsen</a> | All rights reserved
+	</div>
+
+	<div class="login" id="login">
+		<h4>Se Connecté</h4>
+		<hr>
+		<span onclick="document.getElementById('login').style.display='none';document.getElementById('black').style.display='none'" >&times;</span>
+		<form method="post">
+			<?= $form->input('username', 'Pseudo'); ?>
+			<?= $form->input('password', 'Mot de passe', ['type' => 'password']); ?>
+			<div class="row">
+				<button type="submit" name="action">Login</button>
+			</div>
+		</form>
 	</div>
 	
 	<script src="../public/js/main.js"></script>
