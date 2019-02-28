@@ -22,7 +22,7 @@ class MaterialiseForm extends Form {
 		$label = '<label for="' . $name . '">' . $label . '</label>';
 		$type = isset($options['type']) ? $options['type'] : 'text';
 		if($type === 'textarea') {
-			$input = '<textarea id="' . $name . '" name="' . $name . '" class="materialize-textarea">' . $this->getValue($name) . '</textarea>';
+			$input = '<textarea id="' . $name . '" name="' . $name . '">' . $this->getValue($name) . '</textarea>';
 		} else {
 			$input = '<input id="' . $name . '" name="' . $name . '" type="' . $type . '" class="validate" value="' . $this->getValue($name) . '">';
 		}
@@ -40,7 +40,7 @@ class MaterialiseForm extends Form {
 				$input .= '<option value="' . $k . '" ' . $attributes . '>' . $v . '</option>';
 			}
 		$input .= '</select>';
-		return $this->surround('<div class="col s12">' . $label . ' ' . $input . '</div>');
+		return $this->surround($label . ' ' . $input);
 	}
 
 	/**

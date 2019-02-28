@@ -71,8 +71,9 @@ $form = new \Core\HTML\MaterialiseForm($_POST);
 		Build with <i class="fas fa-heart"></i> by <a href="http://github.com/ofsen">@ofsen</a> | All rights reserved
 	</div>
 
+	<?php if(empty($_SESSION)) { ?>
 	<div class="login" id="login">
-		<h4>Se Connecté</h4>
+		<h4>Se Connecter</h4>
 		<hr>
 		<span onclick="document.getElementById('login').style.display='none';document.getElementById('black').style.display='none'" >&times;</span>
 		<form method="post">
@@ -83,6 +84,7 @@ $form = new \Core\HTML\MaterialiseForm($_POST);
 			</div>
 		</form>
 	</div>
+	<?php } ?>
 	
 	<script src="../public/js/main.js"></script>
 </body>

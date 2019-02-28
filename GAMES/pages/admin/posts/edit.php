@@ -4,6 +4,7 @@ $postTable = App::getInstance()->getTable('Post');
 $post = $postTable->find($_GET['id']);
 $cats = App::getInstance()->getTable('Category')->extract('id', 'nom');
 
+date_default_timezone_set("Europe/Amsterdam");
 $now = new DateTime();
 $date = $now->format('Y-m-d H:i:s'); 
 
@@ -93,13 +94,16 @@ $form = new \Core\HTML\MaterialiseForm($post);
 
 ?>
 
-<form method="post" class="col s12" enctype="multipart/form-data">
+<h4>Modifier "<?= $post->titre; ?>"</h4>
+<hr>
+
+<form method="post" class="edit" enctype="multipart/form-data">
 		<?= $form->input('titre', 'Titre'); ?>
-		<img src="<?= $img = (empty($post->img)) ? "./img/default.jpg" : $post->img; ?>" alt="<?= $post->titre; ?>">
+		<?= $form->select('categorie_id', 'Catégorie', $cats); ?>
+		<div class="edit-img">
+			<img src="<?= $img = (empty($post->img)) ? "./img/default.jpg" : $post->img; ?>" alt="<?= $post->titre; ?>">
+		</div>
 		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
 		<?= $form->input('contenu', 'Contenu', ['type' => 'textarea']); ?>
-		<?= $form->select('categorie_id', 'Catégorie', $cats); ?>
-	<div class="row">
 		<button class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder</button>
-	</div>
 </form>

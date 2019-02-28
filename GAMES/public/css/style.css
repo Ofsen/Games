@@ -12,7 +12,7 @@
 */
 @font-face{font-family: 'Roboto'; font-style:normal; src:url(../webfonts/Roboto/Roboto-Regular.ttf)}
 
-*, a, p, span, h1, h2, h3, h4, h5, .footer, .login {
+*, a, p, span, h1, h2, h3, h4, h5, table, .footer, .login, .add, .edit {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -189,7 +189,7 @@ hr {
     margin-bottom: 1.5em
 }
 
-.cont .posts .post .inner-post img {
+.cont .posts .post .inner-post a img {
     width: 100%;
     height: 100%;
 }
@@ -305,11 +305,11 @@ hr {
     color: #111
 }
 
-.login .input-field {
+.login .input-field, .add .input-field, .edit .input-field {
     margin-bottom: 1em; 
 }
 
-.login .input-field label {
+.login .input-field label, .add .input-field label, .edit .input-field label {
     display: block;
     color: #555;
     font-size: 0.8em;
@@ -322,7 +322,7 @@ hr {
     width: 20em
 }
 
-.login form button {
+.login form button, .add button, .edit button {
     border: none;
     background: #007cb6;
     padding: 1em 1.5em;
@@ -332,7 +332,7 @@ hr {
     margin: 1em 0
 }
 
-.login form button:hover {
+.login form button:hover, .add button:hover {
     color: #111;
 }
 
@@ -398,4 +398,110 @@ hr {
     margin-left: 2em;
     color: #007cb6;
     font-weight: bold;
+}
+
+/* Admin */
+
+table {
+    width: 100%;
+    color: #f0f0f0;
+    margin-bottom: 2em;
+}
+
+table thead {
+    background: #1d1d1d;
+    font-weight: bold;
+}
+
+tr {
+    border-bottom: 1px solid #292929
+}
+
+td, th {
+    padding: 1.5em 2em;
+    text-align: center
+}
+
+td.left {
+    text-align:left
+}
+
+td a {
+    color: #007cb6;
+    text-decoration: none;
+}
+
+ul.admin {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+ul.admin li {
+    display: inline;
+}
+
+ul.admin li a {
+    color: #007cb6
+}
+
+ul.admin li a.disabled {
+    color: currentColor;
+    display: inline-block; 
+    pointer-events: none;
+    text-decoration: none;
+}
+
+p.add {
+    text-align: right;
+    margin: 1.5em 0
+}
+
+p.add a {
+    padding: 1em 1.5em;
+    background: #087f23;
+    color: #fff;
+    text-decoration: none;
+}
+
+a.edit {
+    padding: 1em;
+    background: #007cb6;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+button.delete {
+    cursor: pointer;
+    background: #d50000;
+    padding: 1em;
+    border: none;
+    font-size: 0.8em;
+    color: #fff
+}
+
+/* ADD */
+
+.add {
+    margin-top: 1em;
+}
+
+.add .input-field, .edit .input-field {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.add .input-field label, .edit .input-field label {
+    color: #fff
+}
+
+.add .input-field input, .add .input-field textarea, .add .input-field select, .edit .input-field input, .edit .input-field textarea, .edit .input-field select {
+    border: 1px solid #a0a0a0;
+    padding: 0.75em 1em;
+}
+
+.edit-img {
+    text-align: center
 }
