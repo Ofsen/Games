@@ -2,6 +2,7 @@
 
 $postTable = App::getInstance()->getTable('Post');
 
+date_default_timezone_set("Europe/Amsterdam");
 $now = new DateTime();
 $date = $now->format('Y-m-d H:i:s'); 
 
@@ -69,12 +70,13 @@ $form = new \Core\HTML\MaterialiseForm($_POST);
 
 ?>
 
-<form method="POST" class="col s12" enctype="multipart/form-data">
+<h4>Nouveau jeu</h4>
+<hr>
+
+<form method="POST" class="add" enctype="multipart/form-data">
 		<?= $form->input('titre', 'Titre'); ?>
+		<?= $form->select('categorie_id', 'Catégorie', $cats); ?>
 		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
 		<?= $form->input('contenu', 'Contenu', ['type' => 'textarea']); ?>
-		<?= $form->select('categorie_id', 'Catégorie', $cats); ?>
-	<div class="row">
-		<button class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder</button>
-	</div>
+		<button type="submit" name="action">Sauvegarder</button>
 </form>

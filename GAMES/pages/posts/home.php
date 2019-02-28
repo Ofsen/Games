@@ -20,10 +20,10 @@
 	<div class="post">
 		<?php foreach (App::getInstance()->getTable('Post')->last() as $post): ?>
 		<div onmouseover="showMore(this)" onmouseout="showLess(this)" class="inner-post">
-			<img src="<?= $img = (empty($post->img)) ? "./img/default.jpg" : $post->img; ?>" alt="<?= $post->titre; ?>">
+			<a href="#"><img src="<?= $img = (empty($post->img)) ? "./img/default.jpg" : $post->img; ?>" alt="<?= $post->titre; ?>"></a>
 			<div class="details">
 				<div class="head">
-					<h5><a href="<?= $post->url; ?>"><?= $post->titre; ?></a></h5>
+					<h5><a class="img-a" href="<?= $post->url; ?>"><?= $post->titre; ?></a></h5>
 					<span class="cat"><?= $post->categorie; ?></span>
 				</div>
 				<div id="tail" class="tail">

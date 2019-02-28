@@ -62,7 +62,10 @@ $form = new \Core\HTML\MaterialiseForm($_POST);
 
 ?>
 
-<form method="post" class="col s12" enctype="multipart/form-data">
+<h4>Nouvelle platform</h4>
+<hr>
+
+<form method="post" class="add" enctype="multipart/form-data">
 		<?= $form->input('nom', 'Titre'); ?>
 		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
 	<div class="row">

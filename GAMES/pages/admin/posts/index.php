@@ -2,20 +2,30 @@
 
 $posts = App::getInstance()->getTable('Post')->all();
 
+if (isset($_POST['del'])) {
+	die("hello");
+}
+
 ?>
 
-<h1>Admin Article tools</h1><span class=""><a href="?p=categories.index">Catégories</a></span>
+<h4>Administration des Jeux</h4>
+<hr>
+<ul class="admin">
+	<li><a href="admin.php" class="disabled">Jeux</a></li>
+	<li> | </li>
+	<li><a href="?p=categories.index">Platforms</a></li>
+</ul>
 
-<p>
-	<a href="?p=posts.add" class="waves-effect waves-light btn green right">Ajouter</a>
+<p class="add">
+	<a href="?p=posts.add"><i class="fas fa-plus"></i> Ajouter</a>
 </p>
 
 <table>
 	<thead>
 		<tr>
-			<th>Id</th>
+			<th width="8%">Id</th>
 			<th>Titre</th>
-			<th>Actions</th>
+			<th width="20%">Actions</th>
 		</tr>
 	</thead>
 
@@ -23,12 +33,12 @@ $posts = App::getInstance()->getTable('Post')->all();
 		<?php foreach($posts as $post): ?>
 		<tr>
 			<td><?= $post->id; ?></td>
-			<td><?= $post->titre; ?></td>
+			<td class="left"><a href="index.php?p=posts.show&id=<?= $post->id; ?>"><?= $post->titre; ?></a></td>
 			<td>
-				<a class="waves-effect waves-light btn green" href="?p=posts.edit&id=<?= $post->id; ?>">Edit</a>
+				<a class="edit" href="?p=posts.edit&id=<?= $post->id; ?>">Edit</a>
 				<form action="?p=posts.delete" method="post" style="display:inline">
 					<input type="hidden" name="id" value="<?= $post->id; ?>">
-					<button type="submit" class="waves-effect waves-light btn red">Delete</button>
+					<button class="delete" type="submit" name="del">Delete</button>
 				</form>
 				
 			</td>

@@ -81,11 +81,13 @@ $form = new \Core\HTML\MaterialiseForm($cat);
 
 ?>
 
-<form method="post" class="col s12" enctype="multipart/form-data">
+<h4>Modifier "<?= $cat->nom; ?>"</h4>
+<hr>
+<form method="post" class="edit" enctype="multipart/form-data">
 		<?= $form->input('nom', 'Titre'); ?>
-		<img src="<?= $img = (empty($cat->img)) ? "./img/default.jpg" : $cat->img; ?>" alt="<?= $cat->nom; ?>">
+		<div class="edit-img">
+			<img src="<?= $img = (empty($cat->img)) ? "./img/default.jpg" : $cat->img; ?>" alt="<?= $cat->nom; ?>">
+		</div>
 		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
-	<div class="row">
 		<button class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder</button>
-	</div>
 </form>
