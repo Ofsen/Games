@@ -23,7 +23,7 @@ class MysqlDatabase extends Database {
 	private function getPDO() {
 		if ($this->pdo === null) {
 			$pdo = new PDO('mysql:dbname=games;host=localhost', 'root', 'root');
-			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 			$this->pdo = $pdo;
 		}
 		return $this->pdo;
@@ -49,9 +49,9 @@ class MysqlDatabase extends Database {
 		return $datas;
 	}
 
-	public function prepare($statement, $attributs, $class_name = null, $one = false) {
+	public function prepare($statement, $attributes, $class_name = null, $one = false) {
 		$req = $this->getPDO()->prepare($statement);
-		$res = $req->execute($attributs);
+		$res = $req->execute($attributes);
 		if(strpos($statement,'UPDATE') === 0 ||
 			strpos($statement,'INSERT') === 0 ||
 			strpos($statement,'DELETE') === 0) {

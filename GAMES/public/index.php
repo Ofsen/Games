@@ -13,11 +13,11 @@ if(isset($_GET['p'])) {
 
 ob_start();
 if ($page === 'home') {
-	require ROOT . '/pages/posts/home.php';
-} elseif($page === 'posts.category') {
-	require ROOT . '/pages/posts/category.php';
-} elseif($page === 'posts.show') {
-	require ROOT . '/pages/posts/show.php';
+	require ROOT . '/pages/games/home.php';
+} elseif($page === 'games.platform') {
+	require ROOT . '/pages/games/platform.php';
+} elseif($page === 'games.show') {
+	require ROOT . '/pages/games/show.php';
 } elseif($page === 'login') {
 	require ROOT . '/pages/users/login.php';
 } elseif($page === 'logout') {

@@ -3,6 +3,4 @@ namespace Core\Database;
 
 class Database {
 	
-
-
 }

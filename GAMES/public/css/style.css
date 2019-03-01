@@ -12,7 +12,7 @@
 */
 @font-face{font-family: 'Roboto'; font-style:normal; src:url(../webfonts/Roboto/Roboto-Regular.ttf)}
 
-*, a, p, span, h1, h2, h3, h4, h5, table, .footer, .login, .add, .edit {
+*, a, p, span, h1, h2, h3, h4, h5, table, .footer, .login, .add, .edit, .danger, .warn {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -342,6 +342,9 @@ hr {
     height: 20em;
     padding: 1em;
     position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
 
 .single .head h4 {
@@ -504,4 +507,19 @@ button.delete {
 
 .edit-img {
     text-align: center
+}
+
+.danger {
+    background: #d50000;
+}
+
+.warn {
+    background: #292929;
+}
+
+.danger, .warn {
+    padding: 1em 0.5em;
+    width: 100%;
+    text-align: center;
+    margin: 1em 0;
 }
