@@ -12,8 +12,12 @@
 */
 @font-face{font-family: 'Roboto'; font-style:normal; src:url(../webfonts/Roboto/Roboto-Regular.ttf)}
 
-*, a, p, span, h1, h2, h3, h4, h5, table, .footer, .login, .add, .edit {
+*, a, p, span, h1, h2, h3, h4, h5, table, .footer, .login, .add, .edit, .danger, .warn {
     font-family: 'Roboto', sans-serif;
+}
+
+#small {
+    display: none;
 }
 
 body {
@@ -54,18 +58,20 @@ body {
 .header .container .logo .search {
     position: absolute;
     top: 1.5em;
-    right: 0
+    right: 0;
+    width: 40%;
 }
 
 .header .container .logo .search input[type = 'text'] {
+    position: absolute;
+    right: 0;
     height: 3.125em;
-    width: 30em;
+    width: 100%;
     padding: 0 1em;
     color: #7f7f7f;
     background: #f0f0f0;
     font-size: 1em;
     border: none;
-    position: relative;
 }
 
 .header .container .logo .search button {
@@ -90,8 +96,12 @@ body {
     font-style: italic;
 }
 
+.header .container .nav {
+    display: flex;
+    justify-content: space-between;
+}
+
 .header .container .nav .nav-l, .header .container .nav .nav-r {
-    display: inline-block;
     margin:1em 0;
 }
 
@@ -108,10 +118,6 @@ body {
 
 .header .container .nav ul li a:hover, .header .container .nav .nav-r li a {
     color: #007cb6;
-}
-
-.header .container .nav .nav-r {
-    float: right;
 }
 
 .header .container .nav .nav-r li a.blue-bg, .header .container .nav .nav-l li a.blue-bg {
@@ -158,6 +164,7 @@ hr {
     text-decoration: none;
     color: #7f7f7f;
     flex-basis: 32%;
+    margin-bottom: 1.5em
 }
 
 .cont .cats ul a li {
@@ -166,8 +173,14 @@ hr {
     padding: 2em 0
 }
 
-.cont .cats ul a li img {
-    padding: 0.5em 0 1em 0;
+.cont .cats ul a li .img-plat, .edit-img-plat {
+    width: 4.5625em;
+    height: 4.5625em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    margin: 0.5em 0 1em 50%;
+    transform: translateX(-50%);
 }
 
 .cont .cats ul a li h3 {
@@ -179,19 +192,23 @@ hr {
 .cont .posts .post {
     flex-wrap: wrap;
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    flex-direction: row;
 }
 
 .cont .posts .post .inner-post {
-    width: 35.5em;
+    width: 49%;
     position: relative;
     height: 18em;
     margin-bottom: 1.5em
 }
 
-.cont .posts .post .inner-post a img {
+.cont .posts .post .inner-post a .img-show {
     width: 100%;
     height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 20%;
 }
 
 .cont .posts .post .inner-post .details {
@@ -266,18 +283,18 @@ hr {
 #black {
     display:none;
     background: black;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     z-index: 500;
-    opacity: 0.8
+    opacity: 0.8;
 }
 
 .login {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -342,6 +359,9 @@ hr {
     height: 20em;
     padding: 1em;
     position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 25%;
 }
 
 .single .head h4 {
@@ -472,6 +492,14 @@ a.edit {
     font-size: 0.8em;
 }
 
+.edit-img {
+    width: 85vw;
+    height: 20em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 20%;
+}
+
 button.delete {
     cursor: pointer;
     background: #d50000;
@@ -479,6 +507,20 @@ button.delete {
     border: none;
     font-size: 0.8em;
     color: #fff
+}
+
+th.id {
+    width: 5%;
+}
+
+th.actions {
+    width: 20%;
+}
+
+td.acts {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
 }
 
 /* ADD */
@@ -502,6 +544,142 @@ button.delete {
     padding: 0.75em 1em;
 }
 
-.edit-img {
-    text-align: center
+.danger {
+    background: #d50000;
+}
+
+.warn {
+    background: #292929;
+}
+
+.danger, .warn {
+    padding: 1em 0.5em;
+    width: 100%;
+    text-align: center;
+    margin: 1em 0;
+}
+
+.header .container .nav .nav-mobile, .header .container .nav .nav-m-l {
+    display: none;
+}
+
+.header .container .nav .nav-mobile {
+    position: relative;
+    color: #007cb6;
+    font-size: 1em;
+    font-size: 1.5em;
+    line-height: 2em;
+}
+
+.header .container .nav .nav-m-l {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 1000;
+    padding: 0 1em 1em 1em;
+    height: 100%;
+    width: 12em;
+    transform: translateX(-100%);
+    transition: 0.2s ease
+}
+
+.header .container .nav .nav-m-l li {
+    display: block;
+}
+
+.header .container .nav .nav-m-l li a {
+    padding: 0;
+    display: block;
+    line-height: 2.5em;
+}
+
+@media only screen and (max-width: 1340px) {
+    .cont .posts .post .inner-post {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 805px) {
+    #black {
+        display:none;
+    }
+
+    .header .container .nav {
+        flex-direction: row-reverse;
+    }
+
+    .header .container .nav .nav-mobile {
+        display: block;
+    }
+
+    .header .container .nav .nav-l {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .cont .cats ul {
+        flex-direction: column
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    ul.admin, .single .head span {
+        top: unset;
+        right: unset;
+    }
+}
+
+@media only screen and (max-width: 344px) {
+    .header .container, .cont, .edit-img {
+        width: 95vw
+    }
+
+    .header .container .logo .search {
+        display: none;
+    }
+
+    .header .container .nav {
+        font-size: 0.8em;
+        margin-top: 1.5em
+    }
+
+    .header .container .nav ul li a {
+        padding-right: 0.5em;
+    }
+
+    .header .container .nav .nav-r li a.blue-bg {
+        padding-left: 0.5em;
+        padding-right: 0.5em
+    }
+
+    td.acts {
+        flex-direction: column;
+    }
+
+    ul.admin {
+        position: unset
+    }
+}
+
+@media only screen and (max-width: 229px) {
+    #large {
+        display: none;
+    }
+
+    #small {
+        display: block;
+    }
+
+    #small p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        padding: 1em;
+        text-align: center;
+        color: #fff
+    }
 }
