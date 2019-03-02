@@ -158,6 +158,7 @@ hr {
     text-decoration: none;
     color: #7f7f7f;
     flex-basis: 32%;
+    margin-bottom: 1.5em
 }
 
 .cont .cats ul a li {
@@ -166,8 +167,14 @@ hr {
     padding: 2em 0
 }
 
-.cont .cats ul a li img {
-    padding: 0.5em 0 1em 0;
+.cont .cats ul a li .img-plat, .edit-img-plat {
+    width: 4.5625em;
+    height: 4.5625em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    margin: 0.5em 0 1em 50%;
+    transform: translateX(-50%);
 }
 
 .cont .cats ul a li h3 {
@@ -189,9 +196,12 @@ hr {
     margin-bottom: 1.5em
 }
 
-.cont .posts .post .inner-post a img {
+.cont .posts .post .inner-post a .img-show {
     width: 100%;
     height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 20%;
 }
 
 .cont .posts .post .inner-post .details {
@@ -344,7 +354,7 @@ hr {
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 50%;
+    background-position: 50% 25%;
 }
 
 .single .head h4 {
@@ -475,6 +485,14 @@ a.edit {
     font-size: 0.8em;
 }
 
+.edit-img {
+    width: 85vw;
+    height: 20em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 20%;
+}
+
 button.delete {
     cursor: pointer;
     background: #d50000;
@@ -503,10 +521,6 @@ button.delete {
 .add .input-field input, .add .input-field textarea, .add .input-field select, .edit .input-field input, .edit .input-field textarea, .edit .input-field select {
     border: 1px solid #a0a0a0;
     padding: 0.75em 1em;
-}
-
-.edit-img {
-    text-align: center
 }
 
 .danger {

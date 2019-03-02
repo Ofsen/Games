@@ -85,9 +85,7 @@ $form = new \Core\HTML\GamesForm($plat);
 <hr>
 <form method="post" class="edit" enctype="multipart/form-data">
 		<?= $form->input('nom', 'Titre'); ?>
-		<div class="edit-img">
-			<img src="<?= $img = (empty($plat->img)) ? "./img/default.jpg" : $plat->img; ?>" alt="<?= $plat->nom; ?>">
-		</div>
+		<div class="edit-img-plat" style="background-image: url('<?= $plat->img; ?>')"></div>
 		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
 		<button class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder</button>
 </form>

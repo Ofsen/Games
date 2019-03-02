@@ -103,9 +103,7 @@ $form = new \Core\HTML\GamesForm($game);
 <form method="post" class="edit" enctype="multipart/form-data">
 		<?= $form->input('titre', 'Titre'); ?>
 		<?= $form->select('plat_id', 'Plateforme', $plats); ?>
-		<div class="edit-img">
-			<img src="<?= $img = (empty($game->img)) ? "./img/game/default.jpg" : $game->img; ?>" alt="<?= $game->titre; ?>">
-		</div>
+		<div class="edit-img" style="background-image: url('<?= $game->img; ?>')"></div>
 		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
 		<?= $form->input('descr', 'Déscription', ['type' => 'textarea']); ?>
 		<?= $form->input('dev', 'Développeur'); ?>
