@@ -31,7 +31,8 @@ $form = new \Core\HTML\GamesForm($_POST);
     <link href="../public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-	<div id="black"> </div>
+	<div id="large">
+	<div id="black" onclick="hide(this)"> </div>
 	<div class="header">
 		<div class="container">
 			<div class="logo">
@@ -58,10 +59,23 @@ $form = new \Core\HTML\GamesForm($_POST);
 					<li><a class="blue-bg" href="index.php?p=logout">Se Déconnecter</a></li>
 					<?php } else { ?>
 					<li><a href="#">S'inscrire</a></li>
-					<li><a class="blue-bg" href="#" onclick="document.getElementById('login').style.display='block';document.getElementById('black').style.display='block'">Se Connecter</a></li>
+					<li><a class="blue-bg" href="#" onclick="loginShow()">Se Connecter</a></li>
 					<?php } ?>
 				</ul>
+				<a href="#" class="nav-mobile" onclick="sideNavShow()">
+					<i class="fas fa-bars"></i>
+				</a>
+				<ul class="nav-m-l">
+					<h4>Menu</h4>
+					<hr>
+					<li><a href="index.php">Index</a></li>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Ipsum</a></li>
+					<li><a href="#">Dolor</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
 			</div>
+
 		</div>
 	</div>
 
@@ -77,7 +91,7 @@ $form = new \Core\HTML\GamesForm($_POST);
 	<div class="login" id="login">
 		<h4>Se Connecter</h4>
 		<hr>
-		<span onclick="document.getElementById('login').style.display='none';document.getElementById('black').style.display='none'" >&times;</span>
+		<span onclick="loginHide()" >&times;</span>
 		<form method="post">
 			<?= $form->input('username', 'Pseudo'); ?>
 			<?= $form->input('password', 'Mot de passe', ['type' => 'password']); ?>
@@ -87,7 +101,12 @@ $form = new \Core\HTML\GamesForm($_POST);
 		</form>
 	</div>
 	<?php } ?>
+	</div>
 	
+	<div id="small">
+		<p>Sorry but your screen is so small that we don't have enough space to show our content or even to apologize... </p>
+	</div>
+
 	<script src="../public/js/main.js"></script>
 </body>
 </html>

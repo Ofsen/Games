@@ -19,18 +19,16 @@ $plats = App::getInstance()->getTable('Platform')->all();
 <table>
 	<thead>
 		<tr>
-			<th width="8%">Id</th>
 			<th>Titre</th>
-			<th width="20%">Actions</th>
+			<th class="actions">Actions</th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<?php foreach($plats as $plat): ?>
 		<tr>
-			<td><?= $plat->id; ?></td>
 			<td class="left"><a href="index.php?p=games.platform&id=<?= $plat->id; ?>"><?= $plat->nom; ?></a></td>
-			<td>
+			<td class="acts">
 				<a class="edit" href="?p=platforms.edit&id=<?= $plat->id; ?>">Edit</a>
 				<form action="?p=platforms.delete" method="post" style="display:inline">
 					<input type="hidden" name="id" value="<?= $plat->id; ?>">
