@@ -22,6 +22,10 @@ if ($page === 'home') {
 	require ROOT . '/pages/users/login.php';
 } elseif($page === 'logout') {
 	require ROOT . '/pages/users/logout.php';
+} elseif($page === '404') {
+	require ROOT . '/pages/errors/404.php';
+} elseif($page === '403') {
+	require ROOT . '/pages/errors/403.php';
 }
 $content = ob_get_clean();
 

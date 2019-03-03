@@ -24,6 +24,12 @@ body {
     background: #111
 }
 
+.error {
+    color: #fff;
+    font-size: 5em;
+    line-height: 65vh
+}
+
 /* Header */
 
 .header {
@@ -155,7 +161,7 @@ hr {
 
 .cont .cats ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
@@ -163,8 +169,8 @@ hr {
     text-align: center;
     text-decoration: none;
     color: #7f7f7f;
-    flex-basis: 32%;
-    margin-bottom: 1.5em
+    flex-basis: 30%;
+    margin: 1em
 }
 
 .cont .cats ul a li {
@@ -578,7 +584,7 @@ td.acts {
     left: 0;
     background: #fff;
     z-index: 1000;
-    padding: 0 1em 1em 1em;
+    padding: 0 2em 1em 2em;
     height: 100%;
     width: 12em;
     transform: translateX(-100%);

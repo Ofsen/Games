@@ -10,7 +10,7 @@ if (isset($_POST['action'])) {
 
 	if($nomEdited || $fileNotEmpty) {
 		if(!empty($_FILES['img']['name']) && !empty($_FILES['img']['tmp_name']))  {
-			$name = $_FILES['img']['name'];
+			$name = str_replace(" ", "-", $_FILES['img']['name']);
 			$tmpName = $_FILES['img']['tmp_name'];
 			$ext = strrchr($name, ".");
 			$errors = $_FILES['img']['error'];

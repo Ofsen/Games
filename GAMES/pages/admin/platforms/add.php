@@ -5,7 +5,7 @@ $platTable = App::getInstance()->getTable('Platform');
 if (isset($_POST['action'])) {
 	if(!empty($_POST['nom']) && !empty($_FILES['img']['name']) && !empty($_FILES['img']['tmp_name'])) {
 
-		$name = $_FILES['img']['name'];
+		$name = str_replace(" ", "-", $_FILES['img']['name']);
 		$tmpName = $_FILES['img']['tmp_name'];
 		$ext = strrchr($name, ".");
 		$errors = $_FILES['img']['error'];

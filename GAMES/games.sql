@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 02 Mars 2019 à 12:19
+-- Généré le :  Dim 03 Mars 2019 à 21:16
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -35,58 +35,16 @@ CREATE TABLE IF NOT EXISTS `games` (
   `dat` datetime DEFAULT NULL,
   `plat_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `games`
 --
 
 INSERT INTO `games` (`id`, `titre`, `img`, `descr`, `dev`, `dat`, `plat_id`) VALUES
-(1, 'Premier article', './img/game/cyberpunk.jpg', 'Nam vitae ipsum et ex dapibus elementum eget nec tellus. Suspendisse eleifend libero eu lacinia mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla sit amet massa arcu. Proin dolor eros, consequat sed elit eu, facilisis tristique leo. Suspendisse tincidunt augue dui, sit amet semper ex faucibus ac. Nullam aliquam turpis vitae libero fringilla, vel gravida metus aliquam. Pellentesque in ipsum vel sem euismod tempor sit amet maximus ligula. Sed vestibulum tincidunt pretium. Praesent nec ligula suscipit, faucibus augue in, semper metus. Aenean sem velit, egestas quis sapien ac, eleifend fringilla lorem.\r\nNam vitae ipsum et ex dapibus elementum eget nec tellus. Suspendisse eleifend libero eu lacinia mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla sit amet massa arcu. Proin dolor eros, consequat sed elit eu, facilisis tristique leo. Suspendisse tincidunt augue dui, sit amet semper ex faucibus ac. Nullam aliquam turpis vitae libero fringilla, vel gravida metus aliquam. Pellentesque in ipsum vel sem euismod tempor sit amet maximus ligula. Sed vestibulum tincidunt pretium. Praesent nec ligula suscipit, faucibus augue in, semper metus. Aenean sem velit, egestas quis sapien ac, eleifend fringilla lorem.\r\nNam vitae ipsum et ex dapibus elementum eget nec tellus. Suspendisse eleifend libero eu lacinia mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla sit amet massa arcu. Proin dolor eros, consequat sed elit eu, facilisis tristique leo. Suspendisse tincidunt augue dui, sit amet semper ex faucibus ac. Nullam aliquam turpis vitae libero fringilla, vel gravida metus aliquam. Pellentesque in ipsum vel sem euismod tempor sit amet maximus ligula. Sed vestibulum tincidunt pretium. Praesent nec ligula suscipit, faucibus augue in, semper metus. Aenean sem velit, egestas quis sapien ac, eleifend fringilla lorem.', 'Ubisoft', '2019-03-01 23:20:48', 1),
-(2, 'Mon Titre', './img/game/cyberpunk.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus maximus dui sed feugiat. Mauris consequat, nisl ac convallis dapibus, enim urna ullamcorper sapien, porttitor lobortis mauris diam a elit. Curabitur in ligula fringilla, iaculis metus nec, tempor ex. Etiam in suscipit lectus. Mauris vehicula feugiat lorem, tempor volutpat nunc consequat ac. Quisque quis dui ex. Nulla ac metus mattis sapien malesuada feugiat vel id leo. Duis vel eros ornare, gravida nibh nec, pharetra est.\r\n\r\nNam vitae ipsum et ex dapibus elementum eget nec tellus. Suspendisse eleifend libero eu lacinia mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla sit amet massa arcu. Proin dolor eros, consequat sed elit eu, facilisis tristique leo. Suspendisse tincidunt augue dui, sit amet semper ex faucibus ac. Nullam aliquam turpis vitae libero fringilla, vel gravida metus aliquam. Pellentesque in ipsum vel sem euismod tempor sit amet maximus ligula. Sed vestibulum tincidunt pretium. Praesent nec ligula suscipit, faucibus augue in, semper metus. Aenean sem velit, egestas quis sapien ac, eleifend fringilla lorem.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus maximus dui sed feugiat. Mauris consequat, nisl ac convallis dapibus, enim urna ullamcorper sapien, porttitor lobortis mauris diam a elit. Curabitur in ligula fringilla, iaculis metus nec, tempor ex. Etiam in suscipit lectus. Mauris vehicula feugiat lorem, tempor volutpat nunc consequat ac. Quisque quis dui ex. Nulla ac metus mattis sapien malesuada feugiat vel id leo. Duis vel eros ornare, gravida nibh nec, pharetra est.\r\n', 'Riot Games', '2019-03-01 23:20:59', 3),
-(4, 'Hello', './img/game/cyberpunk.jpg', 'Hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi ', 'Rockstar Games', '2019-03-01 23:21:28', 4);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `platforms`
---
-
-CREATE TABLE IF NOT EXISTS `platforms` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) DEFAULT NULL,
-  `img` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
-
---
--- Contenu de la table `platforms`
---
-
-INSERT INTO `platforms` (`id`, `nom`, `img`) VALUES
-(1, 'XBOX', './img/plat/xbox.jpg'),
-(3, 'PS4', './img/plat/ps.jpg'),
-(4, 'PC', './img/plat/pc.jpg');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `users`
---
-
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Contenu de la table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(1, 'demo', '89e495e7941cf9e40e6980d14a16bf023ccd4c91');
+(1, 'Cyberpunk 2077', './img/game/A-mercenary-on-the-rise-en.jpg', 'Cyberpunk 2077 is a neon cyberpunk game that has The Witcher 3 developer CD Projekt Red moving from a gritty, high fantasy world of an equally gritty, science fiction word metropolis. It''s based off the pen-and-paper RPG of the same name, but plays a heckuva lot like The Matrix game we''ve always wanted.', 'CD Project Red', '2019-03-03 19:35:21', 4),
+(2, 'God Of War', './img/game/god-of-war-4-2018-oo.jpg', 'God of War is a mythology-based action-adventure video game franchise. Created by David Jaffe at Sony''s Santa Monica Studio, the series debuted in 2005 on the PlayStation 2 (PS2) video game console, and has become a flagship title for the PlayStation brand, consisting of eight games across multiple platforms.', 'SIE Santa Monica Studio', '2019-03-03 19:30:26', 3),
+(4, 'Red Dead Redemption 2', './img/game/red-dead-redemption-2-4k-8d.jpg', 'Red Dead Redemption 2 is a Western action-adventure game developed and published by Rockstar Games. It was released on October 26, 2018, for the PlayStation 4 and Xbox One consoles. The third entry in the Red Dead series, it is a prequel to the 2010 game Red Dead Redemption.', 'Rockstar Games', '2019-03-03 19:34:28', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

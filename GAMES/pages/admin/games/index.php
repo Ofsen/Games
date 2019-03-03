@@ -34,7 +34,7 @@ if (isset($_POST['del'])) {
 			<td class="left"><a href="index.php?p=games.show&id=<?= $game->id; ?>"><?= $game->titre; ?></a></td>
 			<td class="acts">
 				<a class="edit" href="?p=games.edit&id=<?= $game->id; ?>">Edit</a>
-				<form action="?p=games.delete" method="post" style="display:inline">
+				<form action="?p=games.delete" method="post" style="display:inline" onsubmit="return confirm('Voulez vous vraiment supprimer ce jeu ?');">
 					<input type="hidden" name="id" value="<?= $game->id; ?>">
 					<button class="delete" type="submit" name="del">Delete</button>
 				</form>
