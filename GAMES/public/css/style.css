@@ -24,6 +24,12 @@ body {
     background: #111
 }
 
+.error {
+    color: #fff;
+    font-size: 5em;
+    line-height: 65vh
+}
+
 /* Header */
 
 .header {
@@ -578,7 +584,7 @@ td.acts {
     left: 0;
     background: #fff;
     z-index: 1000;
-    padding: 0 1em 1em 1em;
+    padding: 0 2em 1em 2em;
     height: 100%;
     width: 12em;
     transform: translateX(-100%);

@@ -1,7 +1,7 @@
 <?php
 
 $platTable = App::getInstance()->getTable('Platform');
-$gameTable = App::getInstance()->getTable('Platform');
+$gameTable = App::getInstance()->getTable('Game');
 
 if(!empty($_POST)) {
     $platTable->delete($_POST['id']);
