@@ -1,5 +1,4 @@
 <?php 
-
 $app = App::getInstance();
 $platform = $app->getTable('Platform');
 
@@ -9,8 +8,8 @@ if ($plat === false) {
 	$app->notFound();
 }
 
-$games = $app->getTable('Game')->lastByPlat($_GET['id']);
 $plats = $platform->all();
+$games = $app->getTable('Game')->lastByPlat($_GET['id']);
 
 ?>
 
@@ -18,7 +17,9 @@ $plats = $platform->all();
 	<h4><?= $plat->nom; ?></h4>
 	<hr>
 	<div class="post">
-		<?php foreach ($games as $game): ?>
+		<?php 
+		if(!empty($games)) {
+		foreach ($games as $game): ?>
 		<div onmouseover="showMore(this)" onmouseout="showLess(this)" class="inner-post">
 			<a href="<?= $game->url; ?>">
 				<div class="img-show" style="background-image: url('<?= $game->img; ?>')">
@@ -35,8 +36,10 @@ $plats = $platform->all();
 				</div>
 			</div>
 		</div>
-		<?php endforeach; ?>
-	
+		<?php endforeach; 
+		} else {
+			echo "<p>Il n'y a aucun jeu sous cette platform.</p>";
+		}?>
 	</div>
 
 	<div class="cats">
@@ -46,7 +49,7 @@ $plats = $platform->all();
 			<?php foreach ($plats as $ps): ?>
 			<a href="<?= $ps->url; ?>">
 				<li>
-					<img src="<?= $ps->img; ?>" alt="<?= $ps->nom; ?>">
+					<div class="img-plat" style="background-image: url('<?= $ps->img; ?>');"></div>
 					<h3><?= $ps->nom; ?></h3>
 					<p>Check out <?= $ps->nom; ?> games.</p>
 				</li>

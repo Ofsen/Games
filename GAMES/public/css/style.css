@@ -155,7 +155,7 @@ hr {
 
 .cont .cats ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
@@ -163,8 +163,8 @@ hr {
     text-align: center;
     text-decoration: none;
     color: #7f7f7f;
-    flex-basis: 32%;
-    margin-bottom: 1.5em
+    flex-basis: 30%;
+    margin: 1em
 }
 
 .cont .cats ul a li {

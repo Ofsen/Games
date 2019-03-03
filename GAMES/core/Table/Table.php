@@ -21,6 +21,10 @@ class Table {
 		return $this->query("SELECT * FROM " . $this->table);
 	}
 
+	public function three() {
+		return $this->query("SELECT * FROM " . $this->table . " LIMIT 3");
+	}
+
 	public function find($id) {
 		return $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
 	}

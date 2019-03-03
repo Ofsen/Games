@@ -30,7 +30,7 @@ $plats = App::getInstance()->getTable('Platform')->all();
 			<td class="left"><a href="index.php?p=games.platform&id=<?= $plat->id; ?>"><?= $plat->nom; ?></a></td>
 			<td class="acts">
 				<a class="edit" href="?p=platforms.edit&id=<?= $plat->id; ?>">Edit</a>
-				<form action="?p=platforms.delete" method="post" style="display:inline">
+				<form action="?p=platforms.delete" method="post"  onsubmit="return confirm('En supprimant une platform vous allez au même temps supprimer tout les jeux lister sous cette platform. Voulez vous vraiment supprimer cette platform ?');">
 					<input type="hidden" name="id" value="<?= $plat->id; ?>">
 					<button class="delete" type="submit">Delete</button>
 				</form>
