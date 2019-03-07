@@ -9,7 +9,7 @@ class GameEntity extends Entity {
 	}
 
 	public function getExt() {
-		$html = '<p>' . substr($this->descr, 0, 190) . '...</p>';
+		$html = '<p>' . substr($this->descr, 0, 100) . '...</p>';
 		$html .= '<span><a href="' . $this->getUrl() . '">Voir la suite</a></span>';
 		return $html;
 	}

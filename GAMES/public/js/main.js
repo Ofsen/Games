@@ -1,6 +1,6 @@
 function showMore(object) {
-    object.querySelector(".details").style.background = '#fff';
-    object.querySelector(".details").style.height = '65%';
+    object.querySelector(".details").style.background = 'rgba(255, 255, 255, 0.85)';
+    object.querySelector(".details").style.height = '70%';
     object.querySelector("h5").style.background = '#007cb6';
     object.querySelector(".img-a").style.color = '#fff';
     object.querySelector("#tail").style.display = 'block';

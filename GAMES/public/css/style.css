@@ -243,10 +243,10 @@ hr {
 
 .cont .posts .post .inner-post .details .head span.cat {
     position: absolute;
-    top: 1em;
     right: 1em;
     background: #111;
-    padding: 1em;
+    padding: 0 1em;
+    line-height: 3em;
 }
 
 .cont .posts .post .inner-post .details .tail {
@@ -623,9 +623,7 @@ td.acts {
     .header .container .nav .nav-l {
         display: none;
     }
-}
-
-@media only screen and (max-width: 640px) {
+    
     .cont .cats ul {
         flex-direction: column
     }
@@ -635,6 +633,9 @@ td.acts {
     ul.admin, .single .head span {
         top: unset;
         right: unset;
+    }
+    .cont .posts .post .inner-post .details .head h5 a {
+        font-size: 1em
     }
 }
 
@@ -667,6 +668,11 @@ td.acts {
 
     ul.admin {
         position: unset
+    }
+
+    .cont .posts .post .inner-post .details .head span {
+        font-size: 0.8em;
+        line-height: 2em
     }
 }
 
