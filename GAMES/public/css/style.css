@@ -206,7 +206,8 @@ hr {
     width: 49%;
     position: relative;
     height: 18em;
-    margin-bottom: 1.5em
+    margin-bottom: 1.5em;
+    overflow: hidden
 }
 
 .cont .posts .post .inner-post a .img-show {
@@ -218,11 +219,11 @@ hr {
 }
 
 .cont .posts .post .inner-post .details {
+    transition: 0.2s ease;
+    transform: translateY(-45%);
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    transition: background 0.2s ease-out;
+    top: 100%;
+    width: 100%
 }
 
 .cont .posts .post .inner-post .details .head, .cont .posts .post .inner-post .details .tail {
@@ -250,21 +251,26 @@ hr {
 }
 
 .cont .posts .post .inner-post .details .tail {
-    display: none;
+    display: flex;
+    flex-direction: column;
     color: #555;
 }
 
+.cont .posts .post .inner-post .details .tail p {
+    margin: 0 0 1em 0;
+}
+
 .cont .posts .post .inner-post .details .tail span {
-    position: absolute;
-    bottom: 1.5em;
-    right: 1em;
+    background: #007cb6;
+    align-self: flex-end;
 }
 
 .cont .posts .post .inner-post .details .tail span a {
     color: #fff;
-    padding: 0.5em 1em;
+    padding: 0 1em;
     text-decoration: none;
-    background: #007cb6;
+    
+    line-height: 2.5em;
 }
 
 /* Footer */
@@ -600,6 +606,70 @@ td.acts {
     display: block;
     line-height: 2.5em;
 }
+
+/* USER */
+.user {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 45vh;
+}
+
+.user .info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    flex-basis: 49%;
+}
+
+.user .info .userl h5 {
+    font-weight: bold;
+    display: inline-block;
+}
+
+.user .info .userl span i {
+    padding: 0.5em;
+    font-size: 0.8em;
+    margin-left: .5em
+}
+
+.user .info .userl span i:hover {
+    cursor: pointer
+}
+
+.user .info .userr {
+    display: flex;
+    flex-direction: column
+}
+
+.user .info .userr input {
+    padding: .8em;
+    border: none;
+    margin-top: 1px
+}
+
+.user .info .userr .button {
+    display: flex;
+}
+
+.user .info .userr .button button {
+    flex-basis: 50%;
+    padding: 0.8em;
+    border: none;
+    color: #fff
+}
+
+.user .info .userr .button button.ok {
+    background: #087f23;
+}
+
+.user .info .userr .button button.no {
+    background: #d50000;
+}
+
+
+/* MEDIA */
 
 @media only screen and (max-width: 1340px) {
     .cont .posts .post .inner-post {

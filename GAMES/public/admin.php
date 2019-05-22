@@ -15,7 +15,7 @@ if(isset($_GET['p'])) {
 // Authentification 
 $app = App::getInstance();
 $auth = new DBAuth($app->getDb());
-if (!$auth->logged()) {
+if (!$auth->logged() || !$auth->admin()) {
 	$app->forbidden();
 }
 
@@ -36,6 +36,14 @@ if ($page === 'home') {
 	require ROOT . '/pages/admin/platforms/add.php';
 } elseif($page === 'platforms.delete') {
 	require ROOT . '/pages/admin/platforms/delete.php';
+} elseif ($page === 'users.index') {
+	require ROOT . '/pages/admin/users/index.php';
+} elseif($page === 'users.edit') {
+	require ROOT . '/pages/admin/users/edit.php';
+} elseif($page === 'users.add') {
+	require ROOT . '/pages/admin/users/add.php';
+} elseif($page === 'users.delete') {
+	require ROOT . '/pages/admin/users/delete.php';
 }
 $content = ob_get_clean();
 

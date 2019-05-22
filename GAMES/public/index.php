@@ -18,14 +18,18 @@ if ($page === 'home') {
 	require ROOT . '/pages/games/platform.php';
 } elseif($page === 'games.show') {
 	require ROOT . '/pages/games/show.php';
-} elseif($page === 'login') {
-	require ROOT . '/pages/users/login.php';
 } elseif($page === 'logout') {
 	require ROOT . '/pages/users/logout.php';
+} elseif($page === 'signup') {
+	require ROOT . '/pages/users/signup.php';
+} elseif($page === 'user') {
+	require ROOT . '/pages/users/user.php';
 } elseif($page === '404') {
 	require ROOT . '/pages/errors/404.php';
 } elseif($page === '403') {
 	require ROOT . '/pages/errors/403.php';
+} elseif($page === 'search') {
+	require ROOT . '/pages/search.php';
 }
 $content = ob_get_clean();
 

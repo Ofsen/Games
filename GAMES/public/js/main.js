@@ -1,17 +1,15 @@
 function showMore(object) {
-    object.querySelector(".details").style.background = 'rgba(255, 255, 255, 0.85)';
-    object.querySelector(".details").style.height = '70%';
+    object.querySelector(".details").style.background = 'rgba(255, 255, 255, 1)';
+    object.querySelector(".details").style.transform = 'translateY(-100%)';
     object.querySelector("h5").style.background = '#007cb6';
     object.querySelector(".img-a").style.color = '#fff';
-    object.querySelector("#tail").style.display = 'block';
 }
 
 function showLess(object) {
     object.querySelector(".details").style.background = 'none';
-    object.querySelector(".details").style.height = '';
+    object.querySelector(".details").style.transform = 'translateY(-45%)';
     object.querySelector("h5").style.background = '#fff';
     object.querySelector(".img-a").style.color = '#007cb6';
-    object.querySelector("#tail").style.display = '';
 }
 
 function loginShow() {
