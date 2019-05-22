@@ -1,20 +1,11 @@
 <?php
 
 $plats = App::getInstance()->getTable('Platform')->all();
+$adminForm = new \App\HTML\AdminForm();
+
+echo $adminForm->header("plat");
 
 ?>
-
-<h4>Administration des Plateformes</h4>
-<hr>
-<ul class="admin">
-	<li><a href="admin.php">Jeux</a></li>
-	<li> | </li>
-	<li><a href="?p=platforms.index" class="disabled">Plateformes</a></li>
-</ul>
-
-<p class="add">
-	<a href="?p=platforms.add"><i class="fas fa-plus"></i> Ajouter</a>
-</p>
 
 <table>
 	<thead>

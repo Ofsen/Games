@@ -1,22 +1,9 @@
 <?php 
 
 if(empty($_SESSION)) {
-	if(!empty($_POST)) {
-		$auth = new \Core\Auth\DBAuth(App::getInstance()->getDb());
-		if($auth->login($_POST['username'], $_POST['password'])) {
-			header('Location:admin.php');
-		} else {
-			?>
-			
-			<div class="card-panel red lighten-2">
-				Nom d'utilisateur ou mot de passe incorrecte.
-			</div>
-
-			<?php
-		}
-	}
-$form = new \Core\HTML\GamesForm($_POST);
+	$form = new \App\HTML\GamesForm($_POST);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +16,9 @@ $form = new \Core\HTML\GamesForm($_POST);
 	<link href="css/awesome.css" rel="stylesheet"  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="css/reset.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="../public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<!-- JS -->
+	<script src="../public/js/main.js"></script>
+	<script src="../public/js/jquery.min.js"></script>		
 </head>
 <body>
 	<div id="large">
@@ -41,8 +31,10 @@ $form = new \Core\HTML\GamesForm($_POST);
 					<p>The best place for Gamers.</p>
 				</a>
 				<div class="search">
-					<input type="text" placeholder="Search for Games/Articles...">
-					<button><i class="fas fa-search"></i></button>
+					<form method="post" action="index.php?p=search">
+						<input type="text" id="srchfield" name="srchfield" placeholder="Search for Games/Articles...">
+						<button id="srch" name="srch"><i class="fas fa-search"></i></button>
+					</form>
 				</div>
 			</div>
 			<div class="nav">
@@ -54,11 +46,22 @@ $form = new \Core\HTML\GamesForm($_POST);
 					<li><a href="#">Contact</a></li>
 				</ul>
 				<ul class="nav-r">
-					<?php if(!empty($_SESSION)) { ?>
-					<li><a href="admin.php">Admin</a></li>
+					<?php 
+					if(!empty($_SESSION)) {
+						?>
+						<li><a href="index.php?p=user&id=<?= $_SESSION['auth']; ?>">Profile</a></li>
+						<?php
+						if($_SESSION['auth'] == '1') {
+							?>
+							<li><a href="admin.php">Admin</a></li>
+							<?php 
+						}
+						?>
 					<li><a class="blue-bg" href="index.php?p=logout">Se Déconnecter</a></li>
-					<?php } else { ?>
-					<li><a href="#">S'inscrire</a></li>
+						<?php
+					} else { 
+					?>
+					<li><a href="index.php?p=signup">S'inscrire</a></li>
 					<li><a class="blue-bg" href="#" onclick="loginShow()">Se Connecter</a></li>
 					<?php } ?>
 				</ul>
@@ -92,13 +95,14 @@ $form = new \Core\HTML\GamesForm($_POST);
 		<h4>Se Connecter</h4>
 		<hr>
 		<span onclick="loginHide()" >&times;</span>
-		<form method="post">
+		<form method="post" id="loginForm">
 			<?= $form->input('username', 'Pseudo'); ?>
 			<?= $form->input('password', 'Mot de passe', ['type' => 'password']); ?>
 			<div class="row">
-				<button type="submit" name="action">Login</button>
+				<button type="submit" id="submit" name="action">Login</button>
 			</div>
 		</form>
+		<div id="error" style="display:none;color:#fff;max-width:17.456875em" class="danger"></div>
 	</div>
 	<?php } ?>
 	</div>
@@ -107,6 +111,32 @@ $form = new \Core\HTML\GamesForm($_POST);
 		<p>Sorry but your screen is so small that we don't have enough space to show our content or even to apologize... </p>
 	</div>
 
-	<script src="../public/js/main.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#loginForm").submit(function() {
+			$("#error").css("display","none");
+			var user = $(this).find("input[name=username]").val();
+			var pass = $(this).find("input[name=password]").val();
+			$.ajax({
+				method	: 'post',
+				url 	: '../pages/users/login.php',
+				data	: {user:user, pass:pass},
+				success : function(data) {
+					if(data=="Nom d'utilisateur ou mot de passe incorrecte.") {
+						$("#error").css("display","block");
+						$("#error").empty().text(data);
+					} else {
+						if(data!="1") {
+							window.location.replace("index.php");
+						} else {
+							window.location.replace("admin.php");
+						}
+					}
+				}
+			});
+			return false;
+		});
+	});
+	</script>
 </body>
 </html>

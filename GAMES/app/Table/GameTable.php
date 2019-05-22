@@ -46,6 +46,15 @@ class GameTable extends Table {
 				WHERE games.id = ?", [$id], true);
 	}
 
+	
+	public function search($key) {
+		return $this->query("
+				SELECT games.id, games.titre, games.img, games.descr, games.dev, platforms.nom as platform 
+				FROM games 
+				LEFT JOIN platforms ON plat_id = platforms.id
+				WHERE games.titre LIKE '%$key%' OR games.descr LIKE '%$key%'");
+	}
+
 }
 
 ?>
