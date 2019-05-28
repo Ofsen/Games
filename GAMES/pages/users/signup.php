@@ -23,7 +23,7 @@ if(empty($_SESSION)) {
                     ]);
                     if($result) {
                         $auth->login($user, htmlspecialchars($_POST['password']));
-                        header('Location:index.php?p=user&id=' . App::getInstance()->getDb()->lastInsertId());
+                        header('Location:index.php?p=user&id=' . $_SESSION['auth']);
                     }
                 } else {
                     ?>
