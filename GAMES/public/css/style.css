@@ -12,7 +12,7 @@
 */
 @font-face{font-family: 'Roboto'; font-style:normal; src:url(../webfonts/Roboto/Roboto-Regular.ttf)}
 
-*, a, p, span, h1, h2, h3, h4, h5, table, .footer, .login, .add, .edit, .danger, .warn {
+*, a, p, span, h1, h2, h3, h4, h5, h6, table, .footer, .login, .add, .edit, .danger, .warn, .field {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -564,7 +564,11 @@ td.acts {
     background: #292929;
 }
 
-.danger, .warn {
+.green {
+    background: #087f23
+}
+
+.danger, .warn, .green {
     padding: 1em 0.5em;
     width: 100%;
     text-align: center;
@@ -608,66 +612,128 @@ td.acts {
 }
 
 /* USER */
+
 .user {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: 45vh;
+    margin-top: 2em
 }
 
 .user .info {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1em;
     flex-basis: 49%;
+    margin: 1em 0 1em 0
 }
 
-.user .info .userl h5 {
+.user .entete {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.user .info h5 {
     font-weight: bold;
-    display: inline-block;
+    font-size: 1.4em;
+    line-height: 1.4em;
+    margin: 1em 0 0.5em 0;
 }
 
-.user .info .userl span i {
+.user .info .avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 1em 0 0;
+    position: relative;
+}
+
+.user .info .pseudo h5 {
+    display: inline;
+    line-height: 100px;
+}
+
+.user .info .field h6 {
+    display: inline;
+    font-weight: bold;
+    margin: 1em 1em 1em 0;
+    line-height: 2em
+}
+
+.user .info .field i {
+    margin: 0.5em;
     padding: 0.5em;
-    font-size: 0.8em;
-    margin-left: .5em
+    cursor: pointer;
 }
 
-.user .info .userl span i:hover {
-    cursor: pointer
+.user .info .field i#editAv {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.5em 0;
+    background: #111;
 }
 
-.user .info .userr {
+.user .info .field .editUser {
+    display: none;
+    z-index: 9999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 25em;
+    background: #fff;
+    padding: 1em;
+    color: #000;
+}
+
+.user .info .field .editUser input {
+    padding: 1em;
+    display: block;
+    width: 92%;
+    margin-top: 1em;
+}
+
+.user .info .field .editUser input[type="file"] {
+    border: 1px solid #b1b1b1;
+}
+
+.user .info .field .editUser .button {
     display: flex;
-    flex-direction: column
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
 }
 
-.user .info .userr input {
-    padding: .8em;
+.user .info .field .editUser .button button {
+    background: none;
     border: none;
-    margin-top: 1px
+    margin: 1em 0em 0em 0.5em;
+    cursor: pointer;
+    flex-basis: 48.25%;
 }
 
-.user .info .userr .button {
-    display: flex;
+.user .info .field .editUser .button button#ok, .user .info .field .editUser .button button#no {
+    color: #5d5d5d
 }
 
-.user .info .userr .button button {
-    flex-basis: 50%;
-    padding: 0.8em;
-    border: none;
-    color: #fff
+.user .info .field .editUser .button button#ok {
+    border-left: 1px solid #5d5d5d
 }
 
-.user .info .userr .button button.ok {
-    background: #087f23;
+.user .info .field .editUser .button button#ok:hover {
+    color: #087f23
 }
 
-.user .info .userr .button button.no {
-    background: #d50000;
+.user .info .field .editUser .button button#no:hover {
+    color: #d50000
 }
 
+.user .info .field .editUser .green, .user .info .field .editUser .danger {
+    display: none;
+    color: #fff;
+    max-width: 95.5%;
+    margin: 1em 0 0 0 
+} 
 
 /* MEDIA */
 

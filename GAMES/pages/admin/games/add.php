@@ -67,7 +67,7 @@ if (isset($_POST['action'])) {
 }
 
 $plats = App::getInstance()->getTable('Platform')->extract('id', 'nom');
-$form = new \Core\HTML\GamesForm($_POST);
+$form = new \App\HTML\GamesForm($_POST);
 
 ?>
 

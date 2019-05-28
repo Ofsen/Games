@@ -47,9 +47,12 @@ class AdminForm extends Form {
         return $html;
     }
 
-    public function tableHead($for) {
+    public function tableHead() {
         return $head = "<table><thead><tr><th>Titre</th><th class=\"actions\">Actions</th></tr></thead><tbody>";
-        
+    }
+
+    public function tableFooter() {
+        return $footer = "</tbody></table>";
     }
 
 }
