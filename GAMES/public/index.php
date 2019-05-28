@@ -31,6 +31,6 @@ if ($page === 'home') {
 } elseif($page === 'search') {
 	require ROOT . '/pages/search.php';
 }
-$content = ob_get_clean();
+$content = ob_get_clean();	
 
 require ROOT . '/pages/template/default.php';

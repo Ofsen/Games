@@ -22,7 +22,7 @@ if(empty($_SESSION)) {
 </head>
 <body>
 	<div id="large">
-	<div id="black" onclick="hide(this)"> </div>
+	<div id="black" onclick="hide($(this))"> </div>
 	<div class="header">
 		<div class="container">
 			<div class="logo">

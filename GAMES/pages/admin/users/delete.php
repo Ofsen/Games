@@ -1,9 +1,9 @@
 <?php
 
-$gameTable = App::getInstance()->getTable('Game');
+$userTable = App::getInstance()->getTable('User');
 
 if(!empty($_POST)) {
-	$result = $gameTable->delete($_POST['id']);
+	$result = $userTable->delete($_POST['id']);
     header('Location: admin.php');
 }
 

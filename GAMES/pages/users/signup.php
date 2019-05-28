@@ -22,7 +22,7 @@ if(empty($_SESSION)) {
                         'admin' => false
                     ]);
                     if($result) {
-                        $auth->login($user,$pass);
+                        $auth->login($user, htmlspecialchars($_POST['password']));
                         header('Location:index.php?p=user&id=' . App::getInstance()->getDb()->lastInsertId());
                     }
                 } else {
