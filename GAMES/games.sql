@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 22 Mai 2019 à 15:41
+-- Généré le :  Jeu 30 Mai 2019 à 00:11
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `games`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `achat`
+--
+
+CREATE TABLE IF NOT EXISTS `achat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_game` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `gamekey` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+
+--
+-- Contenu de la table `achat`
+--
+
+INSERT INTO `achat` (`id`, `id_game`, `id_user`, `gamekey`) VALUES
+(12, 6, 1, '38c07d9eb6f585cb2e363aa8d83443b1b9fcc722');
 
 -- --------------------------------------------------------
 
@@ -42,10 +63,9 @@ CREATE TABLE IF NOT EXISTS `games` (
 --
 
 INSERT INTO `games` (`id`, `titre`, `img`, `descr`, `dev`, `dat`, `plat_id`) VALUES
-(1, 'Cyberpunk 2077', './img/game/A-mercenary-on-the-rise-en.jpg', 'Cyberpunk 2077 is a neon cyberpunk game that has The Witcher 3 developer CD Projekt Red moving from a gritty, high fantasy world of an equally gritty, science fiction word metropolis. It''s based off the pen-and-paper RPG of the same name, but plays a heckuva lot like The Matrix game we''ve always wanted.', 'CD Project Red', '2019-03-03 19:35:21', 4),
 (2, 'God Of War', './img/game/god-of-war-4-2018-oo.jpg', 'God of War is a mythology-based action-adventure video game franchise. Created by David Jaffe at Sony''s Santa Monica Studio, the series debuted in 2005 on the PlayStation 2 (PS2) video game console, and has become a flagship title for the PlayStation brand, consisting of eight games across multiple platforms.', 'SIE Santa Monica Studio', '2019-03-03 19:30:26', 3),
 (4, 'Red Dead Redemption 2', './img/game/red-dead-redemption-2-4k-8d.jpg', 'Red Dead Redemption 2 is a Western action-adventure game developed and published by Rockstar Games. It was released on October 26, 2018, for the PlayStation 4 and Xbox One consoles. The third entry in the Red Dead series, it is a prequel to the 2010 game Red Dead Redemption.', 'Rockstar Games', '2019-03-03 19:34:28', 1),
-(6, 'tina', './img/game/Void.jpg', 'bonjour le monde, bonjour l''humanitÃ©', 'by me', '2019-05-20 13:32:40', 1);
+(6, 'tina', './img/game/eoLsBkHKu3Ceaq2zn3HpgiCUoAIjLLwjH3tHViEJrSM.png', 'bonjour le monde, bonjour l''humanitÃ©', 'by me', '2019-05-29 12:15:02', 1);
 
 -- --------------------------------------------------------
 
@@ -81,6 +101,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `img` varchar(255) NOT NULL DEFAULT './img/user/default.jpg',
   `email` varchar(255) DEFAULT NULL,
   `nom` varchar(255) DEFAULT NULL,
   `prenom` varchar(255) DEFAULT NULL,
@@ -93,10 +114,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `nom`, `prenom`, `adresse`, `admin`) VALUES
-(1, 'demo', '89e495e7941cf9e40e6980d14a16bf023ccd4c91', 'ofsensmailbox@gmail.com', NULL, NULL, NULL, 1),
-(2, 'Ofsen', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'damogenya@gmail.com', NULL, NULL, NULL, 0),
-(3, 'tina', '1afb4e7d8f1d28d3945bfed25cb6f71e8bf9ecd5', 'aaa@gmail.com', NULL, NULL, NULL, 0);
+INSERT INTO `users` (`id`, `username`, `password`, `img`, `email`, `nom`, `prenom`, `adresse`, `admin`) VALUES
+(1, 'demo', '89e495e7941cf9e40e6980d14a16bf023ccd4c91', './img/user/2bffc66e750ce60107ae3a529ebcf1163f7414e29e38e8270b265758e50ebac2.jpg', 'ofsensmailbox@gmail.com', 'Ouerdane', 'Yanis', 'CitÃ© 150 logement, batiment G, nÂ°113', 1),
+(2, 'Ofsen', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', './img/user/default.jpg', 'damogenya@gmail.com', NULL, NULL, NULL, 0),
+(3, 'tina', '1afb4e7d8f1d28d3945bfed25cb6f71e8bf9ecd5', './img/user/default.jpg', 'aaa@gmail.com', NULL, NULL, NULL, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

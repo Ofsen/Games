@@ -102,7 +102,7 @@ if (isset($_POST['action'])) {
 	}
 }
 
-$form = new \Core\HTML\GamesForm($game);
+$form = new \App\HTML\GamesForm($game);
 
 ?>
 

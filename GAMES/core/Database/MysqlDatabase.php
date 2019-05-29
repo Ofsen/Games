@@ -49,6 +49,15 @@ class MysqlDatabase extends Database {
 		return $datas;
 	}
 
+	/**
+	 * Meilleur "prepare" methode
+	 * 
+	 * @param statement = la requete sql
+	 * @param attributes = les paramètres pour la condition de la requete
+	 * @param class_name = nom de la classe a appellé si null, fetchMode = object
+	 * @param one boolean = fetch or fetchAll
+	 * @return datas
+	 */
 	public function prepare($statement, $attributes, $class_name = null, $one = false) {
 		$req = $this->getPDO()->prepare($statement);
 		$res = $req->execute($attributes);
@@ -68,10 +77,6 @@ class MysqlDatabase extends Database {
 			$datas = $req->fetchAll();
 		}
 		return $datas;
-	}
-
-	public function lastInsertId() {
-		return $this->getPDO()->lastInsertId();
 	}
 
 }

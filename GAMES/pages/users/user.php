@@ -17,6 +17,8 @@ if(!empty($_SESSION)) {
         $email = $userTable->email;
         $adr = $userTable->adresse;
 
+        $check = App::getInstance()->getTable('Achat')->all();
+
         $allow = false;
         if($_SESSION['auth'] == htmlspecialchars($_GET['id'])) {
             $allow = true;
@@ -28,6 +30,13 @@ if(!empty($_SESSION)) {
             <?= $form->userInput('Informations Personnelles', [['name' => 'Nom', 'value' => $nom, 'edit' => 'editN'], ['name' => 'Prenom', 'value' => $prenom, 'edit' => 'editPre']], $allow); ?>
             <?= $form->userInput('Contact', [['name' => 'E-mail', 'value' => $email, 'edit' => 'editE', 'conf' => true], ['name' => 'Adresse', 'value' => $adr, 'edit' => 'editA']], $allow); ?>
             <?= $form->userInput('Sécurité', [['name' => 'Mot de passe', 'value' => '***', 'edit' => 'editPass', 'conf' => true]], $allow); ?>
+            <?php if($check) { ?>
+                <div class="info" style="flex-basis: 100%; background: none !important; padding: 0 !important">
+                    <h5>Jeux acheté</h5>
+                    <hr>
+                    Yes
+                </div>
+            <?php } ?>
         </div>
 
         <script type="text/javascript">

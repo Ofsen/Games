@@ -9,6 +9,7 @@ class GameTable extends Table {
 
 	/**
 	 * Récupère les dernièrs jeux
+	 * 
 	 * @return array
 	 */
 	public function last() {
@@ -21,6 +22,7 @@ class GameTable extends Table {
 
 	/**
 	 * Récupère les dernièrs jeux de la plateforme demandé
+	 * 
 	 * @param $plat_id int
 	 * @return array
 	 */

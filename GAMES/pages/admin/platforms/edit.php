@@ -86,7 +86,7 @@ if (isset($_POST['action'])) {
 	}
 }
 
-$form = new \Core\HTML\GamesForm($plat);
+$form = new \App\HTML\GamesForm($plat);
 
 ?>
 
