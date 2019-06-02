@@ -13,7 +13,7 @@ class MysqlDatabase extends Database {
 	private $db_host;
 	private $pdo;
 
-	public function __construct($db_name, $db_user = 'root', $db_pass = 'root', $db_host = 'localhost') {
+	public function __construct($db_name, $db_user = 'root', $db_pass = '', $db_host = 'localhost') {
 		$this->db_name = $db_name;
 		$this->db_user = $db_user;
 		$this->db_pass = $db_pass;
@@ -22,7 +22,7 @@ class MysqlDatabase extends Database {
 
 	private function getPDO() {
 		if ($this->pdo === null) {
-			$pdo = new PDO('mysql:dbname=games;host=localhost', 'root', 'root');
+			$pdo = new PDO('mysql:dbname=games;host=' . $this->db_host, $this->db_user, $this->db_pass);
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 			$this->pdo = $pdo;
 		}
@@ -77,6 +77,10 @@ class MysqlDatabase extends Database {
 			$datas = $req->fetchAll();
 		}
 		return $datas;
+	}
+
+	public function lastInsertId() {
+		return $this->getPDO()->lastInsertId();
 	}
 
 }
