@@ -1,13 +1,11 @@
 function showMore(object) {
-    object.find(".details").css({"background":"rgba(255, 255, 255, 1)"});
-    object.find(".details").css({"transform":"translateY(-100%)"});
+    object.find(".details").css({"background":"rgba(255, 255, 255, 1)","transform":"translateY(-100%)"});
     object.find("h5").css({"background":"#007cb6"});
     object.find(".img-a").css({"color":"#fff"});
 }
 
 function showLess(object) {
-    object.find(".details").css({"background":"none"});
-    object.find(".details").css({"transform":"translateY(-45%)"});
+    object.find(".details").css({"background":"none", "transform":"translateY(-45%)"});
     object.find("h5").css({"background":"#fff"});
     object.find(".img-a").css({"color":"#007cb6"});
 }
@@ -34,7 +32,7 @@ function hide(object) {
     if($("#login").css("display") == "block") {
         $("#login").css({"display":"none"});
     }
-    object.css({"display":"none"});
+    object.hide();
 }
 
 function resetForm(form) {
@@ -140,4 +138,65 @@ function editProfile($form) {
         }
         return false;
     });
+}
+
+function buy() {
+
+    let buy = $('.buy');
+    let black = $('#black');
+    let no = $('#no');
+    let form = $('#confirmBuy');
+
+    buy.show();
+    black.show();
+
+    form.submit(function () {
+        id_game = form.find('#id_game').val();
+        id_user = form.find('#id_user').val();
+        $.ajax({
+            url: '../pages/games/buy.php',
+            method : 'post',
+            data : {id_game:id_game, id_user:id_user},
+            success : function (data) {
+                buy.css({"background":"none"});
+                buy.find('h6').hide();
+                buy.find('#confirmBuy').hide();
+                if(data == "Erreur : Vous avez déja acheter ce jeu" || data == "Forbidden" || data == "Erreur : Veuillez réessayer") {
+                    if(data == "Forbidden") {
+                        window.location.replace('index.php');
+                    } else {
+                        buy.find('#error').empty().append(data).show();
+                    }
+                } else {
+                    buy.find('#success').empty().append("Bravo ! voici votre clé : " + data).show();
+                }
+            }
+        });
+        return false;
+    });
+
+    black.click(function () {
+        buy.hide();
+        this.hide();
+    });
+
+    no.click(function () {
+        buy.hide();
+        black.hide();
+    });
+
+}
+
+function key() {
+
+    let key = $('#key');
+    let black = $('#black');
+
+    key.show();
+    black.show();
+
+    black.click(function () {
+        key.hide();
+    });
+
 }

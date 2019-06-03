@@ -19,7 +19,7 @@ if(empty($_SESSION)) {
                         'username' => $user,
                         'password' => $pass,
                         'email' => $mail,
-                        'admin' => false
+                        'admin' => 0
                     ]);
                     if($result) {
                         $auth->login($user, htmlspecialchars($_POST['password']));

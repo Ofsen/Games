@@ -12,7 +12,7 @@
 */
 @font-face{font-family: 'Roboto'; font-style:normal; src:url(../webfonts/Roboto/Roboto-Regular.ttf)}
 
-*, a, p, span, h1, h2, h3, h4, h5, h6, table, .footer, .login, .add, .edit, .danger, .warn, .field {
+*, a, p, span, h1, h2, h3, h4, h5, h6, table, .footer, .login, .add, .edit, .danger, .warn, .field, .green, .danger, .key {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -432,6 +432,36 @@ hr {
     font-weight: bold;
 }
 
+.buy, .key {
+    display: none;
+    z-index: 9999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: #fff;
+    padding: 1em;
+    color: #000;
+}
+
+.buy .green, .buy .danger {
+    line-height: 1.5em
+}
+
+.key p {
+    font-weight: bold;
+    display: inline-block;
+}
+
+button.keyButton {
+    background: #087f23 !important;
+}
+
+button.keyButton:hover {
+    color: #fff !important;
+    background: #0eb032 !important;
+}
+
 /* Admin */
 
 table {
@@ -569,7 +599,7 @@ td.acts {
 }
 
 .danger, .warn, .green {
-    padding: 1em 0.5em;
+    padding: 1em;
     width: 100%;
     text-align: center;
     margin: 1em 0;
@@ -622,21 +652,25 @@ td.acts {
 }
 
 .user .info {
-    flex-basis: 49%;
-    margin: 1em 0 1em 0
+    flex-basis: 43.25%;
+    margin: 1em 0 1em 0;
+    background: #151515;
+    padding: 1em 2em
 }
 
 .user .entete {
     flex-basis: 100%;
     display: flex;
     flex-direction: row;
+    padding: 0 !important;
+    background: none !important
 }
 
 .user .info h5 {
     font-weight: bold;
     font-size: 1.4em;
     line-height: 1.4em;
-    margin: 1em 0 0.5em 0;
+    margin: 0.5em 0 0.5em 0;
 }
 
 .user .info .avatar {
@@ -651,14 +685,14 @@ td.acts {
     line-height: 100px;
 }
 
-.user .info .field h6 {
+.user .info .field h6, .buy h6 {
     display: inline;
     font-weight: bold;
     margin: 1em 1em 1em 0;
     line-height: 2em
 }
 
-.user .info .field i {
+.user .info .field i, .buy i {
     margin: 0.5em;
     padding: 0.5em;
     cursor: pointer;
@@ -687,48 +721,48 @@ td.acts {
     color: #000;
 }
 
-.user .info .field .editUser input {
+.editUser input {
     padding: 1em;
     display: block;
     width: 92%;
     margin-top: 1em;
 }
 
-.user .info .field .editUser input[type="file"] {
+.editUser input[type="file"] {
     border: 1px solid #b1b1b1;
 }
 
-.user .info .field .editUser .button {
+.editUser .button {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row-reverse;
 }
 
-.user .info .field .editUser .button button {
+.editUser .button button {
     background: none;
     border: none;
-    margin: 1em 0em 0em 0.5em;
+    margin: 1em 0em 0em 0em;
     cursor: pointer;
-    flex-basis: 48.25%;
+    flex-basis: 50%;
 }
 
-.user .info .field .editUser .button button#ok, .user .info .field .editUser .button button#no {
+.editUser .button button#ok, .editUser .button button#no {
     color: #5d5d5d
 }
 
-.user .info .field .editUser .button button#ok {
+.editUser .button button#ok {
     border-left: 1px solid #5d5d5d
 }
 
-.user .info .field .editUser .button button#ok:hover {
+.editUser .button button#ok:hover {
     color: #087f23
 }
 
-.user .info .field .editUser .button button#no:hover {
+.editUser .button button#no:hover {
     color: #d50000
 }
 
-.user .info .field .editUser .green, .user .info .field .editUser .danger {
+.editUser .green, .editUser .danger, .buy .green, .buy .danger {
     display: none;
     color: #fff;
     max-width: 95.5%;
@@ -743,7 +777,13 @@ td.acts {
     }
 }
 
-@media only screen and (max-width: 805px) {
+@media only screen and (max-width: 960px) {
+    .user .info {
+        flex-basis: 100%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
     #black {
         display:none;
     }
@@ -765,7 +805,7 @@ td.acts {
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 675px) {
     ul.admin, .single .head span {
         top: unset;
         right: unset;
@@ -775,7 +815,7 @@ td.acts {
     }
 }
 
-@media only screen and (max-width: 344px) {
+@media only screen and (max-width: 460px) {
     .header .container, .cont, .edit-img {
         width: 95vw
     }
@@ -812,7 +852,7 @@ td.acts {
     }
 }
 
-@media only screen and (max-width: 229px) {
+@media only screen and (max-width: 256px) {
     #large {
         display: none;
     }

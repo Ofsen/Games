@@ -43,7 +43,9 @@ class AdminForm extends Form {
     public function header($for) {
         $html = $this->h4($for);
         $html .= $this->disable($for);
-        $html .= $this->addTag($for);
+        if($for != "users") {
+            $html .= $this->addTag($for);
+        }
         return $html;
     }
 
