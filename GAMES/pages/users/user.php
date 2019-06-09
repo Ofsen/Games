@@ -2,6 +2,12 @@
 
 $app = App::getInstance();
 $user = $app->getTable('User');
+$achat = $app->getTable('Achat')->myGames($_SESSION['auth']);
+var_dump($achat->myGames($_SESSION['auth']));
+$game = $app->getTable('Game');
+foreach($achat as $a) {
+    var_dump($game->find($a->id_game));
+}
 $userTable = $user->find(htmlspecialchars($_GET['id']));
 
 if(!empty($_SESSION)) {
