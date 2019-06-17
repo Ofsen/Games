@@ -12,11 +12,11 @@ if(empty($_SESSION)) {
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title><?= App::getInstance()->title; ?></title>
-	<!-- CSS  -->
+	<!--	 CSS	 -->
 	<link href="css/awesome.css" rel="stylesheet"  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="css/reset.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="../public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<!-- JS -->
+	<!--	 JS		 -->
 	<script src="../public/js/main.js"></script>
 	<script src="../public/js/jquery.min.js"></script>		
 </head>

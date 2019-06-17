@@ -37,6 +37,7 @@ class GameTable extends Table {
 
 	/**
 	 * Récupère un jeu en liant la plateforme associée
+	 * 
 	 * @param $id int
 	 * @return \App\Entity\GameEntity
 	 */
@@ -48,8 +49,14 @@ class GameTable extends Table {
 				WHERE games.id = ?", [$id], true);
 	}
 
-	
+	/**
+	 * Recherche un jeu dans la base de donnée a partire de l'attribut
+	 * 
+	 * @param $key string
+	 * @return object
+	 */
 	public function search($key) {
+		$key = htmlspecialchars($key);
 		return $this->query("
 				SELECT games.id, games.titre, games.img, games.descr, games.dev, platforms.nom as platform 
 				FROM games 

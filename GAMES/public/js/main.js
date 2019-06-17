@@ -129,9 +129,9 @@ function editProfile($form) {
                         $form.css({"background":"none"});
                         $form.find("#success").empty().append("votre " + $form.find('input')[0].getAttribute('placeholder') + " à bien été modifié !").show();
                         setTimeout(function() {
-                                $form.fadeOut();
-                                $('#black').fadeOut();
-                            },1500);
+                            $form.fadeOut();
+                            $('#black').fadeOut();
+                        },1500);
                     }
                 }
             });

@@ -36,7 +36,27 @@ if(!empty($_SESSION)) {
                 <div class="info" style="flex-basis: 100%; background: none !important; padding: 0 !important">
                     <h5>Jeux acheté</h5>
                     <hr>
-                    Yes
+                    <?php 
+                    if(!empty($achat)) {
+                        foreach($reqG as $game): ?>
+                            <div onmouseover="showMore(this)" onmouseout="showLess(this)" class="inner-post">
+                                <a href="<?= $game->url; ?>"><div class="img-show" style="background-image: url('<?= $game->img; ?>')"></div></a>
+                                <div class="details">
+                                    <div class="head">
+                                        <h5><a class="img-a" href="<?= $game->url; ?>"><?= $game->titre; ?></a></h5>
+                                        <span class="cat"><?= $game->platform; ?></span>
+                                    </div>
+                                    <div id="tail" class="tail">
+                                        <?= $game->ext; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php 
+                        endforeach; 
+                    } else {
+                        echo "<p>Aucun jeu trouvé.</p>";
+                    } 
+                    ?>
                 </div>
             <?php } ?>
         </div>

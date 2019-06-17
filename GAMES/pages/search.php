@@ -2,7 +2,8 @@
 
 if(!empty($_POST['srchfield'])) {
     $keyword = htmlspecialchars($_POST['srchfield']);
-    $req = App::getInstance()->getTable('Game')->search($keyword);
+    $reqG = App::getInstance()->getTable('Game')->search($keyword);
+    $reqP = App::getInstance()->getTable('Platform')->search($keyword);
 } else {
     header('Location:index.php');
 }
@@ -10,12 +11,12 @@ if(!empty($_POST['srchfield'])) {
 ?>
 
 <div class="posts">
-    <h4>Rechérche de : <?= $keyword; ?></h4>
+    <h4>Rechérche de Jeux : <?= $keyword; ?></h4>
     <hr>
     <div class="post">
     <?php 
-    if(!empty($req)) {
-        foreach($req as $game): ?>
+    if(!empty($reqG)) {
+        foreach($reqG as $game): ?>
             <div onmouseover="showMore(this)" onmouseout="showLess(this)" class="inner-post">
                 <a href="<?= $game->url; ?>"><div class="img-show" style="background-image: url('<?= $game->img; ?>')"></div></a>
                 <div class="details">
@@ -35,4 +36,26 @@ if(!empty($_POST['srchfield'])) {
     } 
     ?>
     </div>
+</div>
+
+<div class="cats">
+    <h4>Rechérche de Platforms : <?= $keyword; ?></h4>
+	<hr>
+	<ul>
+    <?php
+    if(!empty($reqP)) {
+        foreach ($reqP as $plat): ?>
+		<a href="<?= $plat->url; ?>">
+			<li>
+				<div class="img-plat" style="background-image: url('<?= $plat->img; ?>');"></div>
+				<h3><?= $plat->nom; ?></h3>
+				<p>Check out <?= $plat->nom; ?> games.</p>
+			</li>
+		</a>
+        <?php endforeach;
+    } else {
+        echo "<p>Aucune platform trouvée.</p>";
+    }  
+    ?>
+	</ul>
 </div>
