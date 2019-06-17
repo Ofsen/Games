@@ -24,7 +24,7 @@
 			<div class="details">
 				<div class="head">
 					<h5><a class="img-a" href="<?= $game->url; ?>"><?= $game->titre; ?></a></h5>
-					<span class="cat"><?= $game->platform; ?></span>
+					<span class="cat"><a href="?p=games.platform&id=<?= App::getInstance()->getTable('Platform')->platIdByName($game->platform)->id; ?>"><?= $game->platform; ?></a></span>
 				</div>
 				<div id="tail" class="tail">
 					<?= $game->ext; ?>

@@ -38,7 +38,7 @@ $app->setTitle($game->titre);
 	<div class="desc">
 		<h5 style="display: inline-block;">Développeur : </h5><span> <?= $game->dev; ?></span>
 		<h5>Déscription :</h5>
-		<p><?= $game->descr; ?></p>
+		<p><?= html_entity_decode($game->descr, ENT_QUOTES | ENT_XML1, 'UTF-8'); ?></p>
 	</div>
 </div>
 

@@ -2,6 +2,7 @@
 
 if(!empty($_POST['srchfield'])) {
     $keyword = htmlspecialchars($_POST['srchfield']);
+    $keyword = preg_replace("#[^0-9a-z]#i","",$keyword);
     $reqG = App::getInstance()->getTable('Game')->search($keyword);
     $reqP = App::getInstance()->getTable('Platform')->search($keyword);
 } else {
@@ -17,12 +18,12 @@ if(!empty($_POST['srchfield'])) {
     <?php 
     if(!empty($reqG)) {
         foreach($reqG as $game): ?>
-            <div onmouseover="showMore(this)" onmouseout="showLess(this)" class="inner-post">
+            <div onmouseover="showMore($(this))" onmouseout="showLess($(this))" class="inner-post">
                 <a href="<?= $game->url; ?>"><div class="img-show" style="background-image: url('<?= $game->img; ?>')"></div></a>
                 <div class="details">
                     <div class="head">
                         <h5><a class="img-a" href="<?= $game->url; ?>"><?= $game->titre; ?></a></h5>
-                        <span class="cat"><?= $game->platform; ?></span>
+                        <span class="cat"><a href="?p=games.platform&id=<?= App::getInstance()->getTable('Platform')->platIdByName($game->platform)->id; ?>"><?= $game->platform; ?></a></span>
                     </div>
                     <div id="tail" class="tail">
                         <?= $game->ext; ?>

@@ -32,7 +32,7 @@ if (isset($_POST['action'])) {
 							$result = $gameTable->update(htmlspecialchars($_GET['id']), [
 								'titre' => htmlspecialchars($_POST['titre']),
 								'img' => htmlspecialchars($dest),
-								'descr' => htmlspecialchars($_POST['descr']),
+								'descr' => htmlentities($_POST['descr'], ENT_QUOTES | ENT_XML1, 'UTF-8'),
 								'dev' => htmlspecialchars($_POST['dev']),
 								'dat' => $dat,
 								'plat_id' => htmlspecialchars($_POST['plat_id'])						
@@ -70,7 +70,7 @@ if (isset($_POST['action'])) {
 			} else {
 				$result = $gameTable->update(htmlspecialchars($_GET['id']), [
 					'titre' => htmlspecialchars($_POST['titre']),
-					'descr' => htmlspecialchars($_POST['descr']),
+					'descr' => htmlentities($_POST['descr'], ENT_QUOTES | ENT_XML1, 'UTF-8'),
 					'dev' => htmlspecialchars($_POST['dev']),
 					'dat' => $dat,
 					'plat_id' => htmlspecialchars($_POST['plat_id'])						

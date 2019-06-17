@@ -24,7 +24,7 @@ class GamesForm extends Form {
 		$type = isset($options['type']) ? $options['type'] : 'text';
 		$value = isset($options['value']) ? $options['value'] : $this->getValue($name);
 		if($type === 'textarea') {
-			$input = '<textarea id="' . $name . '" name="' . $name . '">' . $value . '</textarea>';
+			$input = '<textarea rows="10" id="' . $name . '" name="' . $name . '">' . html_entity_decode($value, ENT_QUOTES | ENT_XML1, 'UTF-8') . '</textarea>';
 		} else {
 			$input = '<input id="' . $name . '" name="' . $name . '" type="' . $type . '" class="validate" value="' . $value . '">';
 		}

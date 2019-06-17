@@ -1,11 +1,11 @@
 function showMore(object) {
-    object.find(".details").css({"background":"rgba(255, 255, 255, 1)","transform":"translateY(-100%)"});
+    object.find(".details").css({"background":"rgba(0, 0, 0, 0.8)","transform":"translateY(-100%)"});
     object.find("h5").css({"background":"#007cb6"});
     object.find(".img-a").css({"color":"#fff"});
 }
 
 function showLess(object) {
-    object.find(".details").css({"background":"none", "transform":"translateY(-45%)"});
+    object.find(".details").css({"background":"none", "transform":"translateY(-42%)"});
     object.find("h5").css({"background":"#fff"});
     object.find(".img-a").css({"color":"#007cb6"});
 }

@@ -220,7 +220,7 @@ hr {
 
 .cont .posts .post .inner-post .details {
     transition: 0.2s ease;
-    transform: translateY(-45%);
+    transform: translateY(-42%);
     position: absolute;
     top: 100%;
     width: 100%
@@ -250,6 +250,11 @@ hr {
     line-height: 3em;
 }
 
+.cont .posts .post .inner-post .details .head span.cat a {
+    color: #a0a0a0;
+    text-decoration: none
+}
+
 .cont .posts .post .inner-post .details .tail {
     display: flex;
     flex-direction: column;
@@ -258,6 +263,7 @@ hr {
 
 .cont .posts .post .inner-post .details .tail p {
     margin: 0 0 1em 0;
+    color: #d5d5d5;
 }
 
 .cont .posts .post .inner-post .details .tail span {
@@ -426,10 +432,12 @@ hr {
     margin-bottom: 1em;
 }
 
+.single .desc p {
+    padding-bottom: 1em
+}
+
 .single .desc p:first-letter {
     margin-left: 2em;
-    color: #007cb6;
-    font-weight: bold;
 }
 
 .buy, .key {

@@ -22,7 +22,7 @@ if (isset($_POST['action'])) {
 					$result = $gameTable->create([
 						'titre' => htmlspecialchars($_POST['titre']),
 						'img' => htmlspecialchars($dest),
-						'descr' => htmlspecialchars($_POST['descr']),
+						'descr' => htmlspecialchars(htmlentities($_POST['descr'])),
 						'dev' => htmlspecialchars($_POST['dev']),
 						'dat' => $dat,
 						'plat_id' => htmlspecialchars($_POST['plat_id'])						
