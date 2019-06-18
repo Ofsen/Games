@@ -18,7 +18,7 @@ if(!empty($_SESSION)) {
         $adr = $userTable->adresse;
 
         $allow = false;
-        if($_SESSION['auth'] == htmlspecialchars($_GET['id'])) {
+        if($_SESSION['auth'] === htmlspecialchars($_GET['id']) || $user->find($_SESSION['auth'])->admin === "1") {
             $allow = true;
         }
 
@@ -31,6 +31,7 @@ if(!empty($_SESSION)) {
             <?= $form->userInput('Informations Personnelles', [['name' => 'Nom', 'value' => $nom, 'edit' => 'editN'], ['name' => 'Prenom', 'value' => $prenom, 'edit' => 'editPre']], $allow); ?>
             <?= $form->userInput('Contact', [['name' => 'E-mail', 'value' => $email, 'edit' => 'editE', 'conf' => true], ['name' => 'Adresse', 'value' => $adr, 'edit' => 'editA']], $allow); ?>
             <?= $form->userInput('Sécurité', [['name' => 'Mot de passe', 'value' => '***', 'edit' => 'editPass', 'conf' => true]], $allow); ?>
+            <?php if($user->find($_SESSION['auth'])->admin === "1" || $_SESSION['auth'] === $_GET['id']) { ?>
             <div class="posts" style="flex-basis: 100%; background: none !important; padding: 0 !important">
                 <h4>Jeux acheté</h4>
                 <hr>
@@ -58,7 +59,7 @@ if(!empty($_SESSION)) {
                 ?>
                 </div>
             </div>
-            </div>
+            <?php } ?>
         </div>
 
         <script type="text/javascript">

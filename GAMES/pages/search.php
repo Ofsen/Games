@@ -2,7 +2,7 @@
 
 if(!empty($_POST['srchfield'])) {
     $keyword = htmlspecialchars($_POST['srchfield']);
-    $keyword = preg_replace("#[^0-9a-z]#i","",$keyword);
+    $keyword = preg_replace("#[^0-9a-z ]#i","",$keyword);
     $reqG = App::getInstance()->getTable('Game')->search($keyword);
     $reqP = App::getInstance()->getTable('Platform')->search($keyword);
 } else {

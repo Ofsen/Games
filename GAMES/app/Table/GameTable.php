@@ -61,7 +61,7 @@ class GameTable extends Table {
 				SELECT games.id, games.titre, games.img, games.descr, games.dev, platforms.nom as platform 
 				FROM games 
 				LEFT JOIN platforms ON plat_id = platforms.id
-				WHERE games.titre LIKE '%$key%' OR games.descr LIKE '%$key%'");
+				WHERE games.titre LIKE '%$key%' OR games.descr LIKE '%$key%' OR games.dev LIKE '%$key%'");
 	}
 
 }

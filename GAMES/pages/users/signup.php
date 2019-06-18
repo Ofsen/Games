@@ -15,15 +15,23 @@ if(empty($_SESSION)) {
         if(!empty($user) && !empty($pass) && !empty($passC) && !empty($mail) && !empty($mailC)) {
             if($pass === $passC) {
                 if($mail === $mailC) {
-                    $result = $userTable->create([
-                        'username' => $user,
-                        'password' => $pass,
-                        'email' => $mail,
-                        'admin' => 0
-                    ]);
-                    if($result) {
-                        $auth->login($user, htmlspecialchars($_POST['password']));
-                        header('Location:index.php?p=user&id=' . $_SESSION['auth']);
+                    if(empty($userTable->searchPseudo($user))) {
+                        $result = $userTable->create([
+                            'username' => $user,
+                            'password' => $pass,
+                            'email' => $mail,
+                            'admin' => 0
+                        ]);
+                        if($result) {
+                            $auth->login($user, htmlspecialchars($_POST['password']));
+                            header('Location:index.php?p=user&id=' . $_SESSION['auth']);
+                        }
+                    } else {
+                        ?>
+                        <div class="danger">
+                            Erreur : Pseudo déja utilisé.
+                        </div>
+                        <?php
                     }
                 } else {
                     ?>

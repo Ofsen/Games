@@ -13,6 +13,7 @@ class AchatTable extends Table {
             FROM games
             LEFT JOIN platforms ON plat_id = platforms.id
             INNER JOIN achat ON id_game = games.id
+            WHERE id_user = " . htmlspecialchars($_GET['id']) . "
             ORDER BY achat.id DESC");
     }
 

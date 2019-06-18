@@ -8,7 +8,7 @@ App::load();
 $user = App::getInstance()->getTable('User');
 $id = htmlspecialchars($_POST['id']);
 
-if($_SESSION['auth'] == "$id") {
+if($_SESSION['auth'] === "$id" || $user->find($_SESSION['auth'])->admin === "1") {
 
     $edit = htmlspecialchars($_POST['edit']);
     (isset($_POST['value'])) ? $value = htmlspecialchars($_POST['value']) : "";
