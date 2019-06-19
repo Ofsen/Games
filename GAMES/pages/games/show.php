@@ -11,7 +11,6 @@ if(isset($_SESSION['auth'])) {
 	$id_user = htmlspecialchars($_SESSION['auth']);
 	$check = App::getInstance()->getTable('Achat')->query("SELECT gamekey FROM achat WHERE id_user = $id_user AND id_game = $id_game");
 }
-
 if ($game === false) {
 	$app->notFound();
 }
@@ -23,7 +22,14 @@ $app->setTitle($game->titre);
 	<div class="head" style="background-image: url(<?= $img = (empty($game->img)) ? "./img/game/default.jpg" : $game->img; ?>);">
 		<h4><?= $game->titre; ?></h4>
 		<hr>
-		<span>Platform(s) : <a href="?p=games.platform&id=<?= $plat->id; ?>"><?= $game->platform; ?></a></span>
+		<span>Platform(s) :
+            <?php
+            $platsName = explode(',',$game->platform);
+            foreach($platsName as $plat) {
+                echo "<a href=\"?p=games.platform&id=" . App::getInstance()->getTable('Platform')->platIdByName($plat)->id . "\" class=\"cat\" alt=\"" . $plat . "\" >" . $plat . "</a>";
+            }
+            ?>
+        </span>
 		<?php if($check) { ?>
 			<button class="keyButton" id="keyButton" onclick="key()">
 				Acheté ! voir la clé

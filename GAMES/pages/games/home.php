@@ -27,7 +27,14 @@
 			<div class="details">
 				<div class="head">
 					<h5><a class="img-a" alt="<?= $game->titre; ?>" href="<?= $game->url; ?>"><?= $game->getTitre(); ?></a></h5>
-					<a class="cat" alt="<?= $game->titre; ?>" href="?p=games.platform&id=<?= App::getInstance()->getTable('Platform')->platIdByName($game->platform)->id; ?>"><?= $game->platform; ?></a>
+					<div class="cats">
+                    <?php
+                    $platsName = explode(',',$game->platform);
+                    foreach($platsName as $plat) {
+                        echo "<a href=\"?p=games.platform&id=" . App::getInstance()->getTable('Platform')->platIdByName($plat)->id . "\" class=\"cat\" alt=\"" . $plat . "\" >" . $plat . "</a>";
+                    }
+                    ?>
+                    </div>
 				</div>
 				<div id="tail" class="tail">
 					<?= $game->ext; ?>

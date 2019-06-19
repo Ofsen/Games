@@ -44,7 +44,14 @@ if(!empty($_SESSION)) {
                             <div class="details">
                                 <div class="head">
                                     <h5><a class="img-a" href="<?= $game->url; ?>"><?= $game->getTitre(); ?></a></h5>
-                                    <span class="cat"><?= $game->platform; ?></span>
+                                    <span class="cat">
+                                        <?php
+                                        $platsName = explode(',',$game->platform);
+                                        foreach($platsName as $plat) {
+                                            echo "<a href=\"?p=games.platform&id=" . App::getInstance()->getTable('Platform')->platIdByName($plat)->id . "\" class=\"cat\" alt=\"" . $plat . "\" >" . $plat . "</a>";
+                                        }
+                                        ?>
+                                    </span>
                                 </div>
                                 <div id="tail" class="tail">
                                     <?= $game->ext; ?>

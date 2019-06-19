@@ -229,6 +229,16 @@ hr {
 .cont .posts .post .inner-post .details .head, .cont .posts .post .inner-post .details .tail {
     margin: 1em;
 }
+.cont .posts .post .inner-post .details .head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cont .posts .post .inner-post .details .head .cats {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
 
 .cont .posts .post .inner-post .details .head h5 {
     display: inline-block;
@@ -243,18 +253,15 @@ hr {
     background: #fff;
 }
 
-.cont .posts .post .inner-post .details .head span.cat {
-}
-
 .cont .posts .post .inner-post .details .head a.cat {
-    display: inline-block;
-    position: absolute;
+    display: inline-table;
     right: 1em;
     background: #111;
     padding: 0 1em;
     line-height: 3em;
     color: #a0a0a0;
-    text-decoration: none
+    text-decoration: none;
+    margin-left: 1em;
 }
 
 .cont .posts .post .inner-post .details .head a.cat:hover {

@@ -200,3 +200,7 @@ function key() {
     });
 
 }
+
+function addPlat() {
+    
+}
