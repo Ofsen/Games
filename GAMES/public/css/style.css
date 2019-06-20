@@ -1,18 +1,11 @@
-/*  Palette:
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    src: local('Roboto Regular'), url('../webfonts/Roboto/Roboto-Regular.ttf')
+}
 
-    Background  #111
-    
-    Blue        #007cb6
-    Text        #1d1d1d
-
-    LightGrey   #f0f0f0
-    LighterGrey #a0a0a0
-    Grey        #7f7f7f
-    DarkGery    #555555
-*/
-@font-face{font-family: 'Roboto'; font-style:normal; src:url(../webfonts/Roboto/Roboto-Regular.ttf)}
-
-*, a, p, span, h1, h2, h3, h4, h5, h6, table, .footer, .login, .add, .edit, .danger, .warn, .field, .green, .danger, .key {
+body {
+    font-size: 100%;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -161,7 +154,7 @@ hr {
 
 .cont .cats ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -169,8 +162,8 @@ hr {
     text-align: center;
     text-decoration: none;
     color: #7f7f7f;
-    flex-basis: 32%;
-    margin-bottom: 1.5em
+    flex-basis: 31%;
+    margin: auto auto 1.5em auto
 }
 
 .cont .cats ul a li {
@@ -256,7 +249,7 @@ hr {
 .cont .posts .post .inner-post .details .head a.cat {
     display: inline-table;
     right: 1em;
-    background: #111;
+    background: #000;
     padding: 0 1em;
     line-height: 3em;
     color: #a0a0a0;
@@ -265,7 +258,7 @@ hr {
 }
 
 .cont .posts .post .inner-post .details .head a.cat:hover {
-    background: #000
+    background: #111
 }
 
 .cont .posts .post .inner-post .details .tail {
@@ -374,7 +367,7 @@ hr {
     margin-bottom: 1em; 
 }
 
-.login .input-field label, .add .input-field label, .edit .input-field label {
+.login .input-field label, .add .input-field label, .edit .input-field label, .addPlats label {
     display: block;
     color: #555;
     font-size: 0.8em;
@@ -430,8 +423,13 @@ hr {
 .single .head span a {
     color: #a0a0a0;
     background: #000;
-    padding: 0.5em 1em;
+    padding: 0.7em 1em;
     margin-left: 0.5em;
+    text-decoration: none
+}
+
+.single .head span a:hover {
+    background: #111
 }
 
 .single .head button {
@@ -615,8 +613,9 @@ td.acts {
     flex-direction: column;
 }
 
-.add .input-field label, .edit .input-field label {
-    color: #fff
+.add .input-field label, .edit .input-field label, .addPlats label {
+    color: #fff;
+    margin-right: 0.5em;
 }
 
 .add .input-field input, .add .input-field textarea, .add .input-field select, .edit .input-field input, .edit .input-field textarea, .edit .input-field select {
@@ -677,6 +676,39 @@ td.acts {
     padding: 0;
     display: block;
     line-height: 2.5em;
+}
+
+.addPlats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.addPlats label {
+    flex-basis: 100%;
+}
+
+.addPlats .input-field label {
+    color: #fff;
+    padding: 1.5em 1.5em 1.5em 3em;
+    display: block;
+    font-size: 0.8em;
+    margin: 0 !important
+}
+
+.addPlats .input-field {
+    position: relative;
+    flex-direction: row-reverse;
+    background: #000;
+    line-height: 1em;
+    margin-right: 1em 
+}
+
+.addPlats .input-field input[type=checkbox] {
+    position: absolute;
+    left: 1.25em;
+    top: 1.5em;
+    margin: 0
 }
 
 /* USER */

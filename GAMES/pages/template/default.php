@@ -13,8 +13,8 @@ if(empty($_SESSION)) {
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title><?= App::getInstance()->title; ?></title>
 	<!--	 CSS	 -->
-	<link href="css/awesome.css" rel="stylesheet"  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="css/reset.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<link href="css/awesome.css" rel="stylesheet"  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="../public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<!--	 JS		 -->
 	<script src="../public/js/main.js"></script>
@@ -40,8 +40,8 @@ if(empty($_SESSION)) {
 			<div class="nav">
 				<ul class="nav-l">
 					<li><a href="index.php">Index</a></li>
-					<li><a href="?p=games">Jeux</a></li>
-					<li><a href="?p=platforms">Consoles</a></li>
+					<li><a href="index.php?p=games">Jeux</a></li>
+					<li><a href="index.php?p=platforms">Consoles</a></li>
 					<li><a href="#">Dolor</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>

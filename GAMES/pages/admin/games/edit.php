@@ -1,24 +1,26 @@
 <?php
 
 $gameTable = App::getInstance()->getTable('Game');
-$game = $gameTable->find($_GET['id']);
-$plats = App::getInstance()->getTable('Platform')->extract('id', 'nom');
+$game = $gameTable->findWithPlat($_GET['id']);
 
 date_default_timezone_set("Europe/Amsterdam");
 $now = new DateTime();
 $dat = $now->format('Y-m-d H:i:s'); 
 
+$platId = $app->getTable('Platform')->platIdByName($game->platform);
+
 if (isset($_POST['action'])) {
 
-	if(!empty($_POST['titre']) && !empty($_POST['descr']) && !empty($_POST['dev']) && !empty($_POST['plat_id']) && !empty($_POST['price'])) {
+
+	if(!empty($_POST['titre']) && !empty($_POST['descr']) && !empty($_POST['dev']) && !empty($_POST['plats']) && !empty($_POST['price'])) {
 		$titreEdited = ($game->titre != htmlspecialchars($_POST['titre']));
 		$descrEdited = ($game->descr != htmlspecialchars($_POST['descr']));
 		$devEdited = ($game->dev != htmlspecialchars($_POST['dev']));
-		$platEdited = ($game->plat_id != htmlspecialchars($_POST['plat_id']));
 		$price = ($game->price != htmlspecialchars($_POST['price']));
+		$plats = (array($platId->id) != $_POST['plats']);
 		$fileNotEmpty = $_FILES['img']['size'] != 0;
 
-		if($titreEdited || $descrEdited || $devEdited || $platEdited || $fileNotEmpty || $price) {
+		if($titreEdited || $descrEdited || $devEdited || $fileNotEmpty || $price || $plats) {
 			if(!empty($_FILES['img']['name']) && !empty($_FILES['img']['tmp_name'])) {
 				$name = str_replace(" ", "-", $_FILES['img']['name']);
 				$tmpName = $_FILES['img']['tmp_name'];
@@ -36,11 +38,24 @@ if (isset($_POST['action'])) {
 								'descr' => htmlentities($_POST['descr'], ENT_QUOTES | ENT_XML1, 'UTF-8'),
 								'dev' => htmlspecialchars($_POST['dev']),
 								'dat' => $dat,
-								'plat_id' => htmlspecialchars($_POST['plat_id']),
 								'price' => htmlspecialchars($_POST['price'])						
 								]);
 							if($result) {
-								header("location: admin.php?p=games.edit&id=" . $_GET['id']);
+								$lastInsertId = App::getInstance()->getDb()->lastInsertId();
+								foreach($_POST['plats'] as $value) {
+									$res = $gpTable->update(htmlspecialchars($_GET['id']), [
+										'plat_id' => htmlspecialchars($value)
+									]);
+								}
+								if($res) {
+									header('Location: admin.php?p=games.edit&id=' . $lastInsertId);
+								} else {
+									?>
+									<div class="danger">
+										Erreur : l'artice n'a pas été ajoutée. Note: Problème lors de l'insertion des plateformes.
+									</div>
+									<?php
+								}
 							} else {
 								?>
 								<div class="danger">
@@ -75,7 +90,6 @@ if (isset($_POST['action'])) {
 					'descr' => htmlentities($_POST['descr'], ENT_QUOTES | ENT_XML1, 'UTF-8'),
 					'dev' => htmlspecialchars($_POST['dev']),
 					'dat' => $dat,
-					'plat_id' => htmlspecialchars($_POST['plat_id']),
 					'price' => htmlspecialchars($_POST['price'])
 					]);
 				if($result) {
@@ -114,7 +128,17 @@ $form = new \App\HTML\GamesForm($game);
 
 <form method="post" class="edit" enctype="multipart/form-data">
 		<?= $form->input('titre', 'Titre'); ?>
-		<?= $form->select('plat_id', 'Plateforme', $plats); ?>
+		<div class="addPlats">
+			<label>Plateformes</label>
+		<?php
+		foreach ($app->getTable('Platform')->all() as $plat) {
+			if($platId->id === $plat->id) {
+				echo $form->input($plat->nom, $plat->nom, ['type' => 'checkbox', 'value' => $plat->id, 'name' => 'plats[]', 'check' => true]); 
+			} else {
+				echo $form->input($plat->nom, $plat->nom, ['type' => 'checkbox', 'value' => $plat->id, 'name' => 'plats[]']); 
+			}
+		}?>
+		</div>
 		<?= $form->input('price', 'Prix'); ?>
 		<div class="edit-img" style="background-image: url('<?= $game->img; ?>')"></div>
 		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
