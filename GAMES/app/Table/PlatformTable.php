@@ -29,5 +29,14 @@ class PlatformTable extends Table {
 				FROM platforms
 				WHERE platforms.nom LIKE '%$key%'");
 	}
+
+	/**
+	 * Récupère 3 platforms de la base de donnée ordonné avec l'id de celle-ci
+	 * 
+	 * @return object
+	 */
+	public function threePlats() {
+		return $this->query("SELECT * FROM platforms ORDER BY id ASC LIMIT 3");
+	}
 }
 ?>

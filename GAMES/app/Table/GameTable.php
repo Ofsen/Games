@@ -8,16 +8,29 @@ class GameTable extends Table {
 	protected $table = 'games';
 
 	/**
-	 * Récupère les dernièrs jeux
+	 * Récupère tout les jeux dans la base de données et les arrange en fonction du titre
+	 * 
+	 * @return object
+	 */
+	public function showAll() {
+		return $this->query("
+				SELECT games.id, games.titre, games.img, games.descr, platforms.nom as platform
+				FROM games
+				LEFT JOIN platforms ON plat_id = platforms.id
+				ORDER BY games.titre ASC");
+	}
+
+	/**
+	 * Récupère les 6 dernièrs jeux ajouté
 	 * 
 	 * @return array
 	 */
 	public function last() {
 		return $this->query("
-				SELECT games.id, games.titre, games.img, games.descr, games.dev, games.dat, platforms.nom as platform
+				SELECT games.id, games.titre, games.img, games.descr, platforms.nom as platform
 				FROM games
 				LEFT JOIN platforms ON plat_id = platforms.id
-				ORDER BY games.dat DESC");
+				ORDER BY games.dat DESC LIMIT 6");
 	}
 
 	/**
@@ -28,7 +41,7 @@ class GameTable extends Table {
 	 */
 	public function lastByPlat($plat_id) {
 		return $this->query("
-				SELECT games.id, games.titre, games.img, games.descr, games.dev, games.dat, platforms.nom as platform
+				SELECT games.id, games.titre, games.img, games.descr, platforms.nom as platform
 				FROM games
 				LEFT JOIN platforms ON plat_id = platforms.id
 				WHERE games.plat_id = ?
@@ -43,7 +56,7 @@ class GameTable extends Table {
 	 */
 	public function findWithPlat($id) {
 		return $this->query("
-				SELECT games.id, games.titre, games.img, games.descr, games.dev, platforms.nom as platform
+				SELECT games.id, games.titre, games.img, games.descr, games.dev, games.dat, games.price, platforms.nom as platform
 				FROM games
 				LEFT JOIN platforms ON plat_id = platforms.id
 				WHERE games.id = ?", [$id], true);
@@ -58,7 +71,7 @@ class GameTable extends Table {
 	public function search($key) {
 		$key = htmlspecialchars($key);
 		return $this->query("
-				SELECT games.id, games.titre, games.img, games.descr, games.dev, platforms.nom as platform 
+				SELECT games.id, games.titre, games.img, games.descr, platforms.nom as platform 
 				FROM games 
 				LEFT JOIN platforms ON plat_id = platforms.id
 				WHERE games.titre LIKE '%$key%' OR games.descr LIKE '%$key%' OR games.dev LIKE '%$key%'");

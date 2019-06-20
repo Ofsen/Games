@@ -161,7 +161,7 @@ hr {
 
 .cont .cats ul {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
@@ -169,8 +169,8 @@ hr {
     text-align: center;
     text-decoration: none;
     color: #7f7f7f;
-    flex-basis: 30%;
-    margin: 1em
+    flex-basis: 32%;
+    margin-bottom: 1.5em
 }
 
 .cont .cats ul a li {
@@ -232,27 +232,33 @@ hr {
 
 .cont .posts .post .inner-post .details .head h5 {
     display: inline-block;
-    background: #fff;
-    padding: 1em 1.5em;
+    padding: 1em 0em;
 }
 
 .cont .posts .post .inner-post .details .head h5 a {
     font-size: 1.5em;
     text-decoration: none;
     color: #007cb6;
+    padding: 0.6em 1em;
+    background: #fff;
 }
 
 .cont .posts .post .inner-post .details .head span.cat {
+}
+
+.cont .posts .post .inner-post .details .head a.cat {
+    display: inline-block;
     position: absolute;
     right: 1em;
     background: #111;
     padding: 0 1em;
     line-height: 3em;
-}
-
-.cont .posts .post .inner-post .details .head span.cat a {
     color: #a0a0a0;
     text-decoration: none
+}
+
+.cont .posts .post .inner-post .details .head a.cat:hover {
+    background: #000
 }
 
 .cont .posts .post .inner-post .details .tail {
@@ -271,12 +277,29 @@ hr {
     align-self: flex-end;
 }
 
+.cont .posts .post .inner-post .details .tail span:hover {
+    background: #088fce;
+}
+
 .cont .posts .post .inner-post .details .tail span a {
     color: #fff;
-    padding: 0 1em;
+    padding: 0.7em 1em;
     text-decoration: none;
-    
     line-height: 2.5em;
+}
+
+.more {
+    display: block;
+    background: #282828;
+    width: 100%;
+    text-align: center;
+    line-height: 3em;
+    text-decoration: none;
+    color:#7f7f7f;
+}
+
+.more:hover {
+    background:#303030;
 }
 
 /* Footer */
@@ -814,10 +837,11 @@ td.acts {
 }
 
 @media only screen and (max-width: 675px) {
-    ul.admin, .single .head span {
-        top: unset;
-        right: unset;
+    ul.admin {
+        padding: 1em 0;
+        position: initial
     }
+
     .cont .posts .post .inner-post .details .head h5 a {
         font-size: 1em
     }
@@ -852,11 +876,6 @@ td.acts {
 
     ul.admin {
         position: unset
-    }
-
-    .cont .posts .post .inner-post .details .head span {
-        font-size: 0.8em;
-        line-height: 2em
     }
 }
 

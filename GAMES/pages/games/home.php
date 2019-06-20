@@ -2,7 +2,7 @@
 	<h4>LES PLATFORMS</h4>
 	<hr>
 	<ul>
-		<?php foreach (App::getInstance()->getTable('Platform')->all() as $plat): ?>
+		<?php foreach (App::getInstance()->getTable('Platform')->threePlats() as $plat): ?>
 		<a href="<?= $plat->url; ?>">
 			<li>
 				<div class="img-plat" style="background-image: url('<?= $plat->img; ?>');"></div>
@@ -12,6 +12,9 @@
 		</a>
 		<?php endforeach; ?>
 	</ul>
+	<a href="?p=platforms" class="more" alt="Voir toutes les platforms" >
+		Voir plus
+	</a>
 </div>
 
 <div class="posts">
@@ -20,11 +23,11 @@
 	<div class="post">
 		<?php foreach (App::getInstance()->getTable('Game')->last() as $game): ?>
 		<div onmouseover="showMore($(this))" onmouseout="showLess($(this))" class="inner-post">
-			<a href="<?= $game->url; ?>"><div class="img-show" style="background-image: url('<?= $game->img; ?>')"></div></a>
+			<a alt="<?= $game->titre; ?>" href="<?= $game->url; ?>"><div class="img-show" style="background-image: url('<?= $game->img; ?>')"></div></a>
 			<div class="details">
 				<div class="head">
-					<h5><a class="img-a" href="<?= $game->url; ?>"><?= $game->titre; ?></a></h5>
-					<span class="cat"><a href="?p=games.platform&id=<?= App::getInstance()->getTable('Platform')->platIdByName($game->platform)->id; ?>"><?= $game->platform; ?></a></span>
+					<h5><a class="img-a" alt="<?= $game->titre; ?>" href="<?= $game->url; ?>"><?= $game->getTitre(); ?></a></h5>
+					<a class="cat" alt="<?= $game->titre; ?>" href="?p=games.platform&id=<?= App::getInstance()->getTable('Platform')->platIdByName($game->platform)->id; ?>"><?= $game->platform; ?></a>
 				</div>
 				<div id="tail" class="tail">
 					<?= $game->ext; ?>
@@ -33,4 +36,7 @@
 		</div>
 		<?php endforeach; ?>
 	</div>
+	<a href="?p=games" class="more" alt="Voir tout les jeux disponible" >
+		Voir plus
+	</a>
 </div>

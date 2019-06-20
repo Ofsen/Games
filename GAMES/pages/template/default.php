@@ -40,8 +40,8 @@ if(empty($_SESSION)) {
 			<div class="nav">
 				<ul class="nav-l">
 					<li><a href="index.php">Index</a></li>
-					<li><a href="#">Lorem</a></li>
-					<li><a href="#">Ipsum</a></li>
+					<li><a href="?p=games">Jeux</a></li>
+					<li><a href="?p=platforms">Consoles</a></li>
 					<li><a href="#">Dolor</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>

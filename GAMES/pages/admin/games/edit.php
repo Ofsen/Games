@@ -10,14 +10,15 @@ $dat = $now->format('Y-m-d H:i:s');
 
 if (isset($_POST['action'])) {
 
-	if(!empty($_POST['titre']) && !empty($_POST['descr']) && !empty($_POST['dev']) && !empty($_POST['plat_id'])) {
+	if(!empty($_POST['titre']) && !empty($_POST['descr']) && !empty($_POST['dev']) && !empty($_POST['plat_id']) && !empty($_POST['price'])) {
 		$titreEdited = ($game->titre != htmlspecialchars($_POST['titre']));
 		$descrEdited = ($game->descr != htmlspecialchars($_POST['descr']));
 		$devEdited = ($game->dev != htmlspecialchars($_POST['dev']));
 		$platEdited = ($game->plat_id != htmlspecialchars($_POST['plat_id']));
+		$price = ($game->price != htmlspecialchars($_POST['price']));
 		$fileNotEmpty = $_FILES['img']['size'] != 0;
 
-		if($titreEdited || $descrEdited || $devEdited || $platEdited || $fileNotEmpty ) {
+		if($titreEdited || $descrEdited || $devEdited || $platEdited || $fileNotEmpty || $price) {
 			if(!empty($_FILES['img']['name']) && !empty($_FILES['img']['tmp_name'])) {
 				$name = str_replace(" ", "-", $_FILES['img']['name']);
 				$tmpName = $_FILES['img']['tmp_name'];
@@ -35,7 +36,8 @@ if (isset($_POST['action'])) {
 								'descr' => htmlentities($_POST['descr'], ENT_QUOTES | ENT_XML1, 'UTF-8'),
 								'dev' => htmlspecialchars($_POST['dev']),
 								'dat' => $dat,
-								'plat_id' => htmlspecialchars($_POST['plat_id'])						
+								'plat_id' => htmlspecialchars($_POST['plat_id']),
+								'price' => htmlspecialchars($_POST['price'])						
 								]);
 							if($result) {
 								header("location: admin.php?p=games.edit&id=" . $_GET['id']);
@@ -73,7 +75,8 @@ if (isset($_POST['action'])) {
 					'descr' => htmlentities($_POST['descr'], ENT_QUOTES | ENT_XML1, 'UTF-8'),
 					'dev' => htmlspecialchars($_POST['dev']),
 					'dat' => $dat,
-					'plat_id' => htmlspecialchars($_POST['plat_id'])						
+					'plat_id' => htmlspecialchars($_POST['plat_id']),
+					'price' => htmlspecialchars($_POST['price'])
 					]);
 				if($result) {
 					header("location: admin.php?p=games.edit&id=" . htmlspecialchars($_GET['id']));
@@ -112,6 +115,7 @@ $form = new \App\HTML\GamesForm($game);
 <form method="post" class="edit" enctype="multipart/form-data">
 		<?= $form->input('titre', 'Titre'); ?>
 		<?= $form->select('plat_id', 'Plateforme', $plats); ?>
+		<?= $form->input('price', 'Prix'); ?>
 		<div class="edit-img" style="background-image: url('<?= $game->img; ?>')"></div>
 		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
 		<?= $form->input('descr', 'Déscription', ['type' => 'textarea']); ?>

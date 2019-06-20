@@ -19,7 +19,11 @@ class Entity {
 		return 'index.php?p=games.show&id=' . $this->id;
 	}
 
-	/* doesn't wrok | don't know why | Fortunalty we call this one time 
+	public function getTitre() {
+        return (strlen($this->titre) > 20) ?  substr($this->titre,0,15) . '...' : $this->titre;
+    }
+
+	/* doesn't wrok | don't know why | Fortunalty we don't call this a lot of times
 	public function getDescr() {
 		return html_entity_decode($this->descr, ENT_QUOTES | ENT_XML1, 'UTF-8');
 	}

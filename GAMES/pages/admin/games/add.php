@@ -7,7 +7,7 @@ $now = new DateTime();
 $dat = $now->format('Y-m-d H:i:s'); 
 
 if (isset($_POST['action'])) {
-	if(!empty($_POST['titre']) && !empty($_POST['descr']) && !empty($_POST['dev']) && !empty($_POST['plat_id']) && !empty($_FILES['img']['name']) && !empty($_FILES['img']['tmp_name'])) {
+	if(!empty($_POST['titre']) && !empty($_POST['descr']) && !empty($_POST['dev']) && !empty($_POST['plat_id']) && !empty($_FILES['img']['name']) && !empty($_FILES['img']['tmp_name']) && !empty($_POST['price'])) {
 
 		$name = str_replace(" ", "-", $_FILES['img']['name']);
 		$tmpName = $_FILES['img']['tmp_name'];
@@ -22,10 +22,11 @@ if (isset($_POST['action'])) {
 					$result = $gameTable->create([
 						'titre' => htmlspecialchars($_POST['titre']),
 						'img' => htmlspecialchars($dest),
-						'descr' => htmlspecialchars(htmlentities($_POST['descr'])),
+						'descr' => htmlentities($_POST['descr'], ENT_QUOTES | ENT_XML1, 'UTF-8'),
 						'dev' => htmlspecialchars($_POST['dev']),
 						'dat' => $dat,
-						'plat_id' => htmlspecialchars($_POST['plat_id'])						
+						'plat_id' => htmlspecialchars($_POST['plat_id']),
+						'price' => htmlspecialchars($_POST['price'])						
 						]);
 					if($result) {
 						header('Location: admin.php?p=games.edit&id=' . App::getInstance()->getDb()->lastInsertId());
@@ -77,6 +78,7 @@ $form = new \App\HTML\GamesForm($_POST);
 <form method="POST" class="add" enctype="multipart/form-data">
 		<?= $form->input('titre', 'Titre'); ?>
 		<?= $form->select('plat_id', 'Plateforme', $plats); ?>
+		<?= $form->input('price', 'Prix'); ?>
 		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
 		<?= $form->input('descr', 'Déscription', ['type' => 'textarea']); ?>
 		<?= $form->input('dev', 'Développeur'); ?>

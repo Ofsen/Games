@@ -31,7 +31,7 @@ $app->setTitle($game->titre);
 			<div class="key" id="key"><p>Clé :</p> <?= $check[0]->gamekey; ?></div>
 		<?php } else { ?>
 			<button class="acheter" id="acheter"<?= $buy = (!empty($id_user)) ? "onclick=\"buy()\"" : "onclick=\"loginShow()\"" ; ?> >
-				Acheter
+				Acheter à <?= $game->price; ?> DA
 			</button>
 		<?php } ?>
 	</div>

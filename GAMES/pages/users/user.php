@@ -43,7 +43,7 @@ if(!empty($_SESSION)) {
                             <a href="<?= $game->url; ?>"><div class="img-show" style="background-image: url('<?= $game->img; ?>')"></div></a>
                             <div class="details">
                                 <div class="head">
-                                    <h5><a class="img-a" href="<?= $game->url; ?>"><?= $game->titre; ?></a></h5>
+                                    <h5><a class="img-a" href="<?= $game->url; ?>"><?= $game->getTitre(); ?></a></h5>
                                     <span class="cat"><?= $game->platform; ?></span>
                                 </div>
                                 <div id="tail" class="tail">

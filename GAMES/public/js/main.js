@@ -1,13 +1,11 @@
 function showMore(object) {
     object.find(".details").css({"background":"rgba(0, 0, 0, 0.8)","transform":"translateY(-100%)"});
-    object.find("h5").css({"background":"#007cb6"});
-    object.find(".img-a").css({"color":"#fff"});
+    object.find(".img-a").css({"color":"#fff","background":"#007cb6"});
 }
 
 function showLess(object) {
     object.find(".details").css({"background":"none", "transform":"translateY(-42%)"});
-    object.find("h5").css({"background":"#fff"});
-    object.find(".img-a").css({"color":"#007cb6"});
+    object.find(".img-a").css({"color":"#007cb6","background":"#fff"});
 }
 
 function loginShow() {
@@ -147,12 +145,13 @@ function buy() {
     let no = $('#no');
     let form = $('#confirmBuy');
 
+    let id_game = form.find('#id_game').val();
+    let id_user = form.find('#id_user').val();
+
     buy.show();
     black.show();
 
     form.submit(function () {
-        id_game = form.find('#id_game').val();
-        id_user = form.find('#id_user').val();
         $.ajax({
             url: '../pages/games/buy.php',
             method : 'post',
@@ -177,7 +176,8 @@ function buy() {
 
     black.click(function () {
         buy.hide();
-        this.hide();
+        black.hide();
+        window.location.replace('index.php?p=games.show&id=' + id_game);
     });
 
     no.click(function () {

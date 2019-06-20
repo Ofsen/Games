@@ -14,8 +14,12 @@ if(isset($_GET['p'])) {
 ob_start();
 if ($page === 'home') {
 	require ROOT . '/pages/games/home.php';
+} elseif ($page === 'games') {
+	require ROOT . '/pages/games/index.php';
+} elseif ($page === 'platforms') {
+	require ROOT . '/pages/platforms/index.php';
 } elseif($page === 'games.platform') {
-	require ROOT . '/pages/games/platform.php';
+	require ROOT . '/pages/platforms/platform.php';
 } elseif($page === 'games.show') {
 	require ROOT . '/pages/games/show.php';
 } elseif($page === 'logout') {
@@ -24,12 +28,12 @@ if ($page === 'home') {
 	require ROOT . '/pages/users/signup.php';
 } elseif($page === 'user') {
 	require ROOT . '/pages/users/user.php';
-} elseif($page === '404') {
-	require ROOT . '/pages/errors/404.php';
 } elseif($page === '403') {
 	require ROOT . '/pages/errors/403.php';
 } elseif($page === 'search') {
 	require ROOT . '/pages/search.php';
+} else {
+	require ROOT . '/pages/errors/404.php';
 }
 $content = ob_get_clean();	
 
