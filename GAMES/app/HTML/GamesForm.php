@@ -27,7 +27,7 @@ class GamesForm extends Form {
 		if($type === 'textarea') {
 			$input = '<textarea rows="10" id="' . $name . '" name="' . $nom . '" >' . html_entity_decode($value, ENT_QUOTES | ENT_XML1, 'UTF-8') . '</textarea>';
 		} else if($type === 'checkbox') {
-			if(isset($options['check'])) {
+			if(isset($options['check']) && $options['check'] === true) {
 				$input = '<input id="' . $name . '" name="' . $nom . '" type="' . $type . '" class="validate" value="' . $value . '" checked>';			
 			} else {
 				$input = '<input id="' . $name . '" name="' . $nom . '" type="' . $type . '" class="validate" value="' . $value . '">';			

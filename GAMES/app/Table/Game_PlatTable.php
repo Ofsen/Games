@@ -7,16 +7,16 @@ class Game_platTable extends Table {
 
     protected $table = 'game_plat';
 
-    public function update($id, $fields) {
-		$sql_parts  = [];
-		$attributes = [];
-		foreach($fields as $k => $v) {
-			$sql_parts[] = "$k = ?";
-			$attributes[] = $v;
-		}
-		$attributes[] = $id;
-		$sql_part = implode(', ',$sql_parts);
-		return $this->query("UPDATE {$this->table} SET $sql_part WHERE game_id = ?", $attributes, true);
+	public function delGByGId($id) {
+		return $this->query("DELETE FROM {$this->table} WHERE game_id = ?", [$id]);
+	}
+
+	public function delPByPId($id) {
+		return $this->query("DELETE FROM {$this->table} WHERE plat_id = ?", [$id]);
+	}
+
+	public function platIdByGameId($id) {
+		return $this->query("SELECT plat_id FROM {$this->table} WHERE game_id = ?", [$id]);
 	}
     
 }

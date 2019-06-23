@@ -19,7 +19,7 @@ if (isset($_POST['action'])) {
 		$dest = './img/game/' . $name;
 		$goodExt = array('.jpg', '.png');
 		
-		if(is_int($_POST['price'])) {
+		if(is_int((int) $_POST['price'])) {
 			if(in_array($ext, $goodExt)) {
 				if ($errors == 0) {
 					if (move_uploaded_file($tmpName, $dest)) {
@@ -109,7 +109,7 @@ $form = new \App\HTML\GamesForm($_POST);
 			echo $form->input($plat->nom, $plat->nom, ['type' => 'checkbox', 'value' => $plat->id, 'name' => 'plats[]']); 
 		}?>
 		</div>
-		<?= $form->input('price', 'Prix'); ?>
+		<?= $form->input('price', 'Prix', ['type' => 'number']); ?>
 		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
 		<?= $form->input('descr', 'Déscription', ['type' => 'textarea']); ?>
 		<?= $form->input('dev', 'Développeur'); ?>

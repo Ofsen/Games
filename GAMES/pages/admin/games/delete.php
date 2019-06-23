@@ -1,9 +1,10 @@
 <?php
-
-$gameTable = App::getInstance()->getTable('Game');
+$app = App::getInstance();
 
 if(!empty($_POST)) {
-	$result = $gameTable->delete($_POST['id']);
+    $app->getTable('Game')->delete($_POST['id']);
+    $app->getTable('Game_plat')->delGByGId($_POST['id']);
+    
     header('Location: admin.php');
 }
 
