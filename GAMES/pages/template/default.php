@@ -32,7 +32,7 @@ if(empty($_SESSION)) {
 				</a>
 				<div class="search">
 					<form method="post" action="index.php?p=search">
-						<input type="text" id="srchfield" name="srchfield" placeholder="Search for Games/Articles...">
+						<input type="text" id="srchfield" name="srchfield" placeholder="Recherche...">
 						<button id="srch" name="srch"><i class="fas fa-search"></i></button>
 					</form>
 				</div>
