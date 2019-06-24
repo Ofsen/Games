@@ -2,6 +2,7 @@
 $app = App::getInstance();
 $game = $app->getTable('Game')->findWithPlat($_GET['id']);
 $plat = $app->getTable('Platform')->platIdByName($game->platform);
+$cat = $app->getTable('Cat')->catByGameId($game->id);
 
 $id_game = htmlspecialchars($_GET['id']);
 $id_user = null;
@@ -42,9 +43,14 @@ $app->setTitle($game->titre);
 		<?php } ?>
 	</div>
 	<div class="desc">
-		<h5 style="display: inline-block;">Développeur : </h5><span> <?= $game->dev; ?></span>
-		<h5>Déscription :</h5>
 		<p><?= html_entity_decode($game->descr, ENT_QUOTES | ENT_XML1, 'UTF-8'); ?></p>
+		<span>Développé par </span><span style="font-weight:bold"> <?= $game->dev; ?></span><br>
+		<span>Catégorie(s) </span>
+		<ul class="cats">
+			<?php foreach($cat as $c): ?>
+			<li><a style="font-weight:bold" href="?p=games.cats&id=<?= $c->id; ?>"><?= $c->nom; ?></a></li>
+			<?php endforeach; ?>
+		</ul>
 	</div>
 </div>
 

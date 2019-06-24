@@ -20,6 +20,10 @@ if ($page === 'home') {
 	require ROOT . '/pages/platforms/index.php';
 } elseif($page === 'games.platform') {
 	require ROOT . '/pages/platforms/platform.php';
+} elseif($page === 'cats') {
+	require ROOT . '/pages/cats/index.php';
+} elseif($page === 'games.cats') {
+	require ROOT . '/pages/cats/cats.php';
 } elseif($page === 'games.show') {
 	require ROOT . '/pages/games/show.php';
 } elseif($page === 'logout') {

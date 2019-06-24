@@ -2,6 +2,7 @@
 $app = App::getInstance();
 $gameTable = $app->getTable('Game');
 $gpTable = $app->getTable('Game_plat');
+$gcTable = $app->getTable('Game_cat');
 
 $game = $gameTable->findWithPlat($_GET['id']);
 
@@ -10,10 +11,11 @@ $now = new DateTime();
 $dat = $now->format('Y-m-d H:i:s'); 
 
 $platId = $gpTable->platIdByGameId(htmlspecialchars($_GET['id']));
+$catId = $gcTable->catIdByGameId(htmlspecialchars($_GET['id']));
 
 if (isset($_POST['action'])) {
 
-	if(!empty($_POST['titre']) && !empty($_POST['descr']) && !empty($_POST['dev']) && !empty($_POST['plats']) && !empty($_POST['price'])) {
+	if(!empty($_POST['titre']) && !empty($_POST['descr']) && !empty($_POST['dev']) && !empty($_POST['plats']) && !empty($_POST['cats']) && !empty($_POST['price'])) {
 		$titreEdited = ($game->titre != htmlspecialchars($_POST['titre']));
 		$descrEdited = ($game->descr != htmlentities($_POST['descr'], ENT_QUOTES | ENT_XML1, 'UTF-8'));
 		$devEdited = ($game->dev != htmlspecialchars($_POST['dev']));
@@ -27,9 +29,17 @@ if (isset($_POST['action'])) {
 		}
 		$platsEdited = ($platIdArray != $_POST['plats']);
 
+		$catIdArray = [];
+		$i = 0;
+		foreach($catId as $c) {
+			$catIdArray[$i] = $c->cat_id;
+			$i++;
+		}
+		$catsEdited = ($catIdArray != $_POST['cats']);
+
 		$fileNotEmpty = ($_FILES['img']['size'] != 0);
 
-		if($titreEdited || $descrEdited || $devEdited || $fileNotEmpty || $priceEdited || $platsEdited) {
+		if($titreEdited || $descrEdited || $devEdited || $fileNotEmpty || $priceEdited || $platsEdited || $catsEdited) {
 			if(!empty($_FILES['img']['name']) && !empty($_FILES['img']['tmp_name'])) {
 				$name = str_replace(" ", "-", $_FILES['img']['name']);
 				$tmpName = $_FILES['img']['tmp_name'];
@@ -50,11 +60,19 @@ if (isset($_POST['action'])) {
 								'price' => htmlspecialchars($_POST['price'])						
 								]);
 							
-							$del = $gpTable->delGByGId(htmlspecialchars($_GET['id']));
+							$delp = $gpTable->delGByGId(htmlspecialchars($_GET['id']));
 							foreach($_POST['plats'] as $idPlat) {
-								$cre = $gpTable->create([
+								$crep = $gpTable->create([
 									'game_id' => htmlspecialchars($_GET['id']),
 									'plat_id' => htmlspecialchars($idPlat)
+								]);
+							}
+
+							$delc = $gcTable->delGByGId(htmlspecialchars($_GET['id']));
+							foreach($_POST['cats'] as $idCat) {
+								$crec = $gcTable->create([
+									'game_id' => htmlspecialchars($_GET['id']),
+									'cat_id' => htmlspecialchars($idCat)
 								]);
 							}
 			
@@ -98,11 +116,19 @@ if (isset($_POST['action'])) {
 					'price' => htmlspecialchars($_POST['price'])
 					]);
 				
-				$del = $gpTable->delGByGId(htmlspecialchars($_GET['id']));
+				$delp = $gpTable->delGByGId(htmlspecialchars($_GET['id']));
 				foreach($_POST['plats'] as $idPlat) {
-					$cre = $gpTable->create([
+					$crep = $gpTable->create([
 						'game_id' => htmlspecialchars($_GET['id']),
 						'plat_id' => htmlspecialchars($idPlat)
+					]);
+				}
+
+				$delc = $gcTable->delGByGId(htmlspecialchars($_GET['id']));
+				foreach($_POST['cats'] as $idCat) {
+					$crec = $gcTable->create([
+						'game_id' => htmlspecialchars($_GET['id']),
+						'cat_id' => htmlspecialchars($idCat)
 					]);
 				}
 
@@ -153,6 +179,20 @@ $form = new \App\HTML\GamesForm($game);
 				}
 			}
 			echo $form->input($plat->nom, $plat->nom, ['type' => 'checkbox', 'value' => $plat->id, 'name' => 'plats[]', 'check' => $checkId]); 
+		}
+		?>
+		</div>
+		<div class="addPlats">
+			<label>Catégories</label>
+		<?php
+		foreach ($app->getTable('Cat')->all() as $cat) {
+			$checkId = false;
+			foreach($catId as $c) {
+				if($c->cat_id === $cat->id) {
+					$checkId = true;
+				}
+			}
+			echo $form->input($cat->nom, $cat->nom, ['type' => 'checkbox', 'value' => $cat->id, 'name' => 'cats[]', 'check' => $checkId]); 
 		}
 		?>
 		</div>

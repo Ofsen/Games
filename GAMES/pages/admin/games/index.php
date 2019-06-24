@@ -4,7 +4,7 @@ $games = App::getInstance()->getTable('Game')->all();
 $adminForm = new \App\HTML\AdminForm();
 
 echo $adminForm->header("games");
-echo $adminForm->tableHead("games");
+echo $adminForm->tableHead();
 
 foreach($games as $game): ?>
 <tr>

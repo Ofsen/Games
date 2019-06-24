@@ -498,6 +498,21 @@ button.keyButton:hover {
     background: #0eb032 !important;
 }
 
+ul.cats {
+    display: inline-block;
+    margin-left: 0.25em;
+}
+
+ul.cats li {
+    margin-right: 0.25em;
+    display: inline-block;
+}
+
+ul.cats li a {
+    text-decoration: none;
+    color: #007cb6
+}
+
 /* Admin */
 
 table {
@@ -847,13 +862,14 @@ td.acts {
     }
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 964px) {
     .user .info {
         flex-basis: 100%;
     }
-}
+    .cont .cats ul a {
+        margin: 0 0 1.5em 0;
+    }
 
-@media only screen and (max-width: 900px) {
     #black {
         display:none;
     }

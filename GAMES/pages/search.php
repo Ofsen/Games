@@ -5,6 +5,7 @@ if(!empty($_POST['srchfield'])) {
     $keyword = preg_replace("#[^0-9a-z ]#i","",$keyword);
     $reqG = App::getInstance()->getTable('Game')->search($keyword);
     $reqP = App::getInstance()->getTable('Platform')->search($keyword);
+    $reqC = App::getInstance()->getTable('Cat')->search($keyword);
 } else {
     header('Location:index.php');
 }
@@ -22,7 +23,7 @@ if(!empty($_POST['srchfield'])) {
                 <a href="<?= $game->url; ?>"><div class="img-show" style="background-image: url('<?= $game->img; ?>')"></div></a>
                 <div class="details">
                     <div class="head">
-                        <h5><a class="img-a" href="<?= $game->url; ?>"><?= $game->titre; ?></a></h5>
+                        <h5><a class="img-a" href="<?= $game->url; ?>"><?= $game->getTitre(); ?></a></h5>
                         <span class="cat">
 					<?php
                     $platsName = explode(',',$game->platform);
@@ -47,7 +48,7 @@ if(!empty($_POST['srchfield'])) {
 </div>
 
 <div class="cats">
-    <h4>Rechérche de Platforms : <?= $keyword; ?></h4>
+    <h4>Rechérche de Plateformes : <?= $keyword; ?></h4>
 	<hr>
 	<ul>
     <?php
@@ -63,6 +64,27 @@ if(!empty($_POST['srchfield'])) {
         <?php endforeach;
     } else {
         echo "<p>Aucune platform trouvée.</p>";
+    }  
+    ?>
+	</ul>
+</div>
+
+<div class="cats">
+    <h4>Rechérche de Catégories : <?= $keyword; ?></h4>
+	<hr>
+	<ul>
+    <?php
+    if(!empty($reqC)) {
+        foreach ($reqC as $cat): ?>
+		<a href="<?= $cat->url; ?>">
+			<li>
+				<h3><?= $cat->nom; ?></h3>
+				<p>Check out <?= $cat->nom; ?> games.</p>
+			</li>
+		</a>
+        <?php endforeach;
+    } else {
+        echo "<p>Aucune catégorie trouvée.</p>";
     }  
     ?>
 	</ul>

@@ -4,13 +4,14 @@ $app = App::getInstance();
 
 $gameTable = $app->getTable('Game');
 $gpTable = $app->getTable('Game_plat');
+$gcTable = $app->getTable('Game_cat');
 
 date_default_timezone_set("Europe/Amsterdam");
 $now = new DateTime();
 $dat = $now->format('Y-m-d H:i:s'); 
 
 if (isset($_POST['action'])) {
-	if(!empty($_POST['titre']) && !empty($_POST['descr']) && !empty($_POST['dev']) && !empty($_POST['plats']) && !empty($_FILES['img']['name']) && !empty($_FILES['img']['tmp_name']) && !empty($_POST['price'])) {
+	if(!empty($_POST['titre']) && !empty($_POST['descr']) && !empty($_POST['dev']) && !empty($_POST['plats']) && !empty($_POST['cats']) && !empty($_FILES['img']['name']) && !empty($_FILES['img']['tmp_name']) && !empty($_POST['price'])) {
 
 		$name = str_replace(" ", "-", $_FILES['img']['name']);
 		$tmpName = $_FILES['img']['tmp_name'];
@@ -34,17 +35,23 @@ if (isset($_POST['action'])) {
 						if($result) {
 							$lastInsertId = App::getInstance()->getDb()->lastInsertId();
 							foreach($_POST['plats'] as $value) {
-								$res = $gpTable->create([
+								$resp = $gpTable->create([
 									'game_id' => $lastInsertId,
 									'plat_id' => htmlspecialchars($value)
 								]);
 							}
-							if($res) {
+							foreach($_POST['cats'] as $value) {
+								$resc = $gcTable->create([
+									'game_id' => $lastInsertId,
+									'cat_id' => htmlspecialchars($value)
+								]);
+							}
+							if($resp && $resc) {
 								header('Location: admin.php?p=games.edit&id=' . $lastInsertId);
 							} else {
 								?>
 								<div class="danger">
-									Erreur : l'artice n'a pas été ajoutée. Note: Problème lors de l'insertion des plateformes.
+									Erreur : l'artice n'a pas été ajoutée. Note: Problème lors de l'insertion des/de la plateforme(s) et des/de la catégorie(s).
 								</div>
 								<?php
 							}
@@ -93,6 +100,7 @@ if (isset($_POST['action'])) {
 }
 
 $plats = $app->getTable('Platform')->extract('id', 'nom');
+$cats = $app->getTable('Cat')->extract('id', 'nom');
 $form = new \App\HTML\GamesForm($_POST);
 
 ?>
@@ -107,6 +115,13 @@ $form = new \App\HTML\GamesForm($_POST);
 		<?php
 		foreach ($app->getTable('Platform')->all() as $plat) {
 			echo $form->input($plat->nom, $plat->nom, ['type' => 'checkbox', 'value' => $plat->id, 'name' => 'plats[]']); 
+		}?>
+		</div>
+		<div class="addPlats">
+			<label>Catégories</label>
+		<?php
+		foreach ($app->getTable('Cat')->all() as $cat) {
+			echo $form->input($cat->nom, $cat->nom, ['type' => 'checkbox', 'value' => $cat->id, 'name' => 'cats[]']); 
 		}?>
 		</div>
 		<?= $form->input('price', 'Prix', ['type' => 'number']); ?>

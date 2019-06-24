@@ -51,6 +51,18 @@ class GameTable extends Table {
 				GROUP BY games.dat DESC", [$plat_id]);
 	}
 
+	public function lastByCat($cat_id) {
+		return $this->query("
+				SELECT games.id, games.titre, games.img, games.descr, GROUP_CONCAT(cats.nom) as cat, GROUP_CONCAT(platforms.nom) as platform
+				FROM games
+				LEFT JOIN game_cat ON games.id = game_cat.game_id
+				INNER JOIN cats ON cats.id = game_cat.cat_id
+				LEFT JOIN game_plat ON games.id = game_plat.game_id
+				INNER JOIN platforms ON platforms.id = game_plat.plat_id
+				WHERE game_cat.cat_id = ?
+				GROUP BY games.dat DESC", [$cat_id]);
+	}
+
 	/**
 	 * Récupère un jeu en liant la plateforme associée
 	 * 
