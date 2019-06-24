@@ -188,7 +188,6 @@ function buy() {
 }
 
 function key() {
-
     let key = $('#key');
     let black = $('#black');
 
@@ -198,5 +197,4 @@ function key() {
     black.click(function () {
         key.hide();
     });
-
 }

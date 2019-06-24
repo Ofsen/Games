@@ -1,20 +1,19 @@
 <?php 
 $app = App::getInstance();
-$platform = $app->getTable('Platform');
+$category = $app->getTable('Cat');
 
-$plat = $platform->find($_GET['id']);
+$cat = $category->find($_GET['id']);
 
-if ($plat === false) {
+if ($cat === false) {
 	$app->notFound();
 }
 
-$plats = $platform->threePlats();
-$games = $app->getTable('Game')->lastByPlat($_GET['id']);
+$games = $app->getTable('Game')->lastByCat($_GET['id']);    
 
 ?>
 
 <div class="posts">
-	<h4><?= $plat->nom; ?></h4>
+	<h4><?= $cat->nom; ?></h4>
 	<hr>
 	<div class="post">
 		<?php 
@@ -43,26 +42,25 @@ $games = $app->getTable('Game')->lastByPlat($_GET['id']);
 		</div>
 		<?php endforeach; 
 		} else {
-			echo "<p>Il n'y a aucun jeu sous cette platform.</p>";
+			echo "<p>Il n'y a aucun jeu sous cette catégorie.</p>";
 		}?>
 	</div>
 
 	<div class="cats">
-	<h4>LES PLATFORMS</h4>
+	<h4>LES CATEGORIES</h4>
 	<hr>
-		<ul>
-			<?php foreach ($plats as $ps): ?>
-			<a href="<?= $ps->url; ?>">
-				<li>
-					<div class="img-plat" style="background-image: url('<?= $ps->img; ?>');"></div>
-					<h3><?= $ps->nom; ?></h3>
-					<p>Check out <?= $ps->nom; ?> games.</p>
-				</li>
-			</a>
-			<?php endforeach; ?>
-		</ul>
-		<a href="?p=platforms" class="more" alt="Voir toutes les platforms" >
+        <ul>
+            <?php foreach (App::getInstance()->getTable('Cat')->threeCats() as $cat): ?>
+            <a href="?p=games.cats&id=<?= $cat->id; ?>">
+                <li>
+                    <h3><?= $cat->nom; ?></h3>
+                    <p>Check out <?= $cat->nom; ?> games.</p>
+                </li>
+            </a>
+            <?php endforeach; ?>
+        </ul>
+        <a href="?p=cats" class="more" alt="Voir toutes les catégories" >
 			Voir plus
 		</a>
-	</div>
+    </div>
 </div>

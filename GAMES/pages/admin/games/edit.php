@@ -1,24 +1,45 @@
 <?php
+$app = App::getInstance();
+$gameTable = $app->getTable('Game');
+$gpTable = $app->getTable('Game_plat');
+$gcTable = $app->getTable('Game_cat');
 
-$gameTable = App::getInstance()->getTable('Game');
-$game = $gameTable->find($_GET['id']);
-$plats = App::getInstance()->getTable('Platform')->extract('id', 'nom');
+$game = $gameTable->findWithPlat($_GET['id']);
 
 date_default_timezone_set("Europe/Amsterdam");
 $now = new DateTime();
 $dat = $now->format('Y-m-d H:i:s'); 
 
+$platId = $gpTable->platIdByGameId(htmlspecialchars($_GET['id']));
+$catId = $gcTable->catIdByGameId(htmlspecialchars($_GET['id']));
+
 if (isset($_POST['action'])) {
 
-	if(!empty($_POST['titre']) && !empty($_POST['descr']) && !empty($_POST['dev']) && !empty($_POST['plat_id']) && !empty($_POST['price'])) {
+	if(!empty($_POST['titre']) && !empty($_POST['descr']) && !empty($_POST['dev']) && !empty($_POST['plats']) && !empty($_POST['cats']) && !empty($_POST['price'])) {
 		$titreEdited = ($game->titre != htmlspecialchars($_POST['titre']));
-		$descrEdited = ($game->descr != htmlspecialchars($_POST['descr']));
+		$descrEdited = ($game->descr != htmlentities($_POST['descr'], ENT_QUOTES | ENT_XML1, 'UTF-8'));
 		$devEdited = ($game->dev != htmlspecialchars($_POST['dev']));
-		$platEdited = ($game->plat_id != htmlspecialchars($_POST['plat_id']));
-		$price = ($game->price != htmlspecialchars($_POST['price']));
-		$fileNotEmpty = $_FILES['img']['size'] != 0;
+		$priceEdited = ($game->price != htmlspecialchars($_POST['price']));
 
-		if($titreEdited || $descrEdited || $devEdited || $platEdited || $fileNotEmpty || $price) {
+		$platIdArray = [];
+		$i = 0;
+		foreach($platId as $p) {
+			$platIdArray[$i] = $p->plat_id;
+			$i++;
+		}
+		$platsEdited = ($platIdArray != $_POST['plats']);
+
+		$catIdArray = [];
+		$i = 0;
+		foreach($catId as $c) {
+			$catIdArray[$i] = $c->cat_id;
+			$i++;
+		}
+		$catsEdited = ($catIdArray != $_POST['cats']);
+
+		$fileNotEmpty = ($_FILES['img']['size'] != 0);
+
+		if($titreEdited || $descrEdited || $devEdited || $fileNotEmpty || $priceEdited || $platsEdited || $catsEdited) {
 			if(!empty($_FILES['img']['name']) && !empty($_FILES['img']['tmp_name'])) {
 				$name = str_replace(" ", "-", $_FILES['img']['name']);
 				$tmpName = $_FILES['img']['tmp_name'];
@@ -36,18 +57,35 @@ if (isset($_POST['action'])) {
 								'descr' => htmlentities($_POST['descr'], ENT_QUOTES | ENT_XML1, 'UTF-8'),
 								'dev' => htmlspecialchars($_POST['dev']),
 								'dat' => $dat,
-								'plat_id' => htmlspecialchars($_POST['plat_id']),
 								'price' => htmlspecialchars($_POST['price'])						
 								]);
+							
+							$delp = $gpTable->delGByGId(htmlspecialchars($_GET['id']));
+							foreach($_POST['plats'] as $idPlat) {
+								$crep = $gpTable->create([
+									'game_id' => htmlspecialchars($_GET['id']),
+									'plat_id' => htmlspecialchars($idPlat)
+								]);
+							}
+
+							$delc = $gcTable->delGByGId(htmlspecialchars($_GET['id']));
+							foreach($_POST['cats'] as $idCat) {
+								$crec = $gcTable->create([
+									'game_id' => htmlspecialchars($_GET['id']),
+									'cat_id' => htmlspecialchars($idCat)
+								]);
+							}
+			
 							if($result) {
-								header("location: admin.php?p=games.edit&id=" . $_GET['id']);
+								header('Location: admin.php?p=games.edit&id=' . htmlspecialchars($_GET['id']));
 							} else {
 								?>
 								<div class="danger">
-									Erreur : le jeu n'a pas été modifiée.
+									Erreur : Le jeu n'a pas pu être modifiée.
 								</div>
 								<?php
 							}
+
 						} else {
 							?>
 							<div class="danger">
@@ -75,15 +113,31 @@ if (isset($_POST['action'])) {
 					'descr' => htmlentities($_POST['descr'], ENT_QUOTES | ENT_XML1, 'UTF-8'),
 					'dev' => htmlspecialchars($_POST['dev']),
 					'dat' => $dat,
-					'plat_id' => htmlspecialchars($_POST['plat_id']),
 					'price' => htmlspecialchars($_POST['price'])
 					]);
+				
+				$delp = $gpTable->delGByGId(htmlspecialchars($_GET['id']));
+				foreach($_POST['plats'] as $idPlat) {
+					$crep = $gpTable->create([
+						'game_id' => htmlspecialchars($_GET['id']),
+						'plat_id' => htmlspecialchars($idPlat)
+					]);
+				}
+
+				$delc = $gcTable->delGByGId(htmlspecialchars($_GET['id']));
+				foreach($_POST['cats'] as $idCat) {
+					$crec = $gcTable->create([
+						'game_id' => htmlspecialchars($_GET['id']),
+						'cat_id' => htmlspecialchars($idCat)
+					]);
+				}
+
 				if($result) {
-					header("location: admin.php?p=games.edit&id=" . htmlspecialchars($_GET['id']));
+					header('Location: admin.php?p=games.edit&id=' . htmlspecialchars($_GET['id']));
 				} else {
 					?>
 					<div class="danger">
-						Erreur : Le nom, la déscription et la plateforme n'a pas été modifiée.
+						Erreur : Le jeu n'a pas pu être modifiée.
 					</div>
 					<?php
 				}
@@ -114,7 +168,34 @@ $form = new \App\HTML\GamesForm($game);
 
 <form method="post" class="edit" enctype="multipart/form-data">
 		<?= $form->input('titre', 'Titre'); ?>
-		<?= $form->select('plat_id', 'Plateforme', $plats); ?>
+		<div class="addPlats">
+			<label>Plateformes</label>
+		<?php
+		foreach ($app->getTable('Platform')->all() as $plat) {
+			$checkId = false;
+			foreach($platId as $p) {
+				if($p->plat_id === $plat->id) {
+					$checkId = true;
+				}
+			}
+			echo $form->input($plat->nom, $plat->nom, ['type' => 'checkbox', 'value' => $plat->id, 'name' => 'plats[]', 'check' => $checkId]); 
+		}
+		?>
+		</div>
+		<div class="addPlats">
+			<label>Catégories</label>
+		<?php
+		foreach ($app->getTable('Cat')->all() as $cat) {
+			$checkId = false;
+			foreach($catId as $c) {
+				if($c->cat_id === $cat->id) {
+					$checkId = true;
+				}
+			}
+			echo $form->input($cat->nom, $cat->nom, ['type' => 'checkbox', 'value' => $cat->id, 'name' => 'cats[]', 'check' => $checkId]); 
+		}
+		?>
+		</div>
 		<?= $form->input('price', 'Prix'); ?>
 		<div class="edit-img" style="background-image: url('<?= $game->img; ?>')"></div>
 		<?= $form->input('img', 'Image', ['type' => 'file']); ?>

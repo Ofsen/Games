@@ -26,7 +26,7 @@ class PlatformTable extends Table {
 	public function search($key) {
 		return $this->query("
 				SELECT platforms.id, platforms.nom, platforms.img 
-				FROM platforms
+				FROM {$this->table}
 				WHERE platforms.nom LIKE '%$key%'");
 	}
 
@@ -36,7 +36,7 @@ class PlatformTable extends Table {
 	 * @return object
 	 */
 	public function threePlats() {
-		return $this->query("SELECT * FROM platforms ORDER BY id ASC LIMIT 3");
+		return $this->query("SELECT * FROM {$this->table} ORDER BY id ASC LIMIT 3");
 	}
 }
 ?>

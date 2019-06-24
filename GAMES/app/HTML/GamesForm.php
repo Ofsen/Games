@@ -23,26 +23,19 @@ class GamesForm extends Form {
 		$label = '<label for="' . $name . '">' . $label . '</label>';
 		$type = isset($options['type']) ? $options['type'] : 'text';
 		$value = isset($options['value']) ? $options['value'] : $this->getValue($name);
+		$nom = isset($options['name']) ? $options['name'] : $name;
 		if($type === 'textarea') {
-			$input = '<textarea rows="10" id="' . $name . '" name="' . $name . '">' . html_entity_decode($value, ENT_QUOTES | ENT_XML1, 'UTF-8') . '</textarea>';
+			$input = '<textarea rows="10" id="' . $name . '" name="' . $nom . '" >' . html_entity_decode($value, ENT_QUOTES | ENT_XML1, 'UTF-8') . '</textarea>';
+		} else if($type === 'checkbox') {
+			if(isset($options['check']) && $options['check'] === true) {
+				$input = '<input id="' . $name . '" name="' . $nom . '" type="' . $type . '" class="validate" value="' . $value . '" checked>';			
+			} else {
+				$input = '<input id="' . $name . '" name="' . $nom . '" type="' . $type . '" class="validate" value="' . $value . '">';			
+			}
 		} else {
-			$input = '<input id="' . $name . '" name="' . $name . '" type="' . $type . '" class="validate" value="' . $value . '">';
+			$input = '<input id="' . $name . '" name="' . $nom . '" type="' . $type . '" class="validate" value="' . $value . '">';
 		}
 		return $this->surround($label . $input);
-	}
-
-	public function select($name, $label, $options) {
-		$label = '<label for="' . $name . '">' . $label . '</label>';
-		$input = '<select name="' . $name . '" class="browser-default">';
-			foreach ($options as $k => $v) {
-				$attributes = '';
-				if ($k == $this->getValue($name)) {
-					$attributes = ' selected';
-				}
-				$input .= '<option value="' . $k . '" ' . $attributes . '>' . $v . '</option>';
-			}
-		$input .= '</select>';
-		return $this->surround($label . ' ' . $input);
 	}
 
 	/**

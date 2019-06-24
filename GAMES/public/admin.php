@@ -40,6 +40,14 @@ if ($page === 'home') {
 	require ROOT . '/pages/admin/users/index.php';
 } elseif($page === 'users.delete') {
 	require ROOT . '/pages/admin/users/delete.php';
+} elseif ($page === 'cats.index') {
+	require ROOT . '/pages/admin/cats/index.php';
+} elseif($page === 'cats.edit') {
+	require ROOT . '/pages/admin/cats/edit.php';
+} elseif($page === 'cats.add') {
+	require ROOT . '/pages/admin/cats/add.php';
+} elseif($page === 'cats.delete') {
+	require ROOT . '/pages/admin/cats/delete.php';
 }
 $content = ob_get_clean();
 
