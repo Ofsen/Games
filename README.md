@@ -1,7 +1,8 @@
 # Games
 A student project with 3 of my friends on creating a catalog for selling products online. in our case products are games.
- - Alpha version release.
+ - Beta version release.
  - New functions ahead.
+ - Checking for bugs here and there.
 
 Here is the sql file for the Data Base 'games' https://github.com/Ofsen/games/blob/master/GAMES/games.sql
 
