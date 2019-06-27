@@ -2,7 +2,14 @@
 
 if(!empty($_POST['srchfield'])) {
     $keyword = htmlspecialchars($_POST['srchfield']);
+
+    /* "#[^0-9a-z ]#i"
+    - Remplace tout les caractères qui ne sont ni des chiffres ni des 
+    lettres (ni l'espace) par "" (il l'enlève).
+    - "i" va prendre en compte les majuscules.
+    */
     $keyword = preg_replace("#[^0-9a-z ]#i","",$keyword);
+
     $reqG = App::getInstance()->getTable('Game')->search($keyword);
     $reqP = App::getInstance()->getTable('Platform')->search($keyword);
     $reqC = App::getInstance()->getTable('Cat')->search($keyword);
@@ -28,7 +35,7 @@ if(!empty($_POST['srchfield'])) {
 					<?php
                     $platsName = explode(',',$game->platform);
                     foreach($platsName as $plat) {
-                        echo "<a href=\"?p=games.platform&id=" . App::getInstance()->getTable('Platform')->platIdByName($plat)->id . "\" class=\"cat\" alt=\"" . $plat . "\" >" . $plat . "</a>";
+                        echo "<a href=\"" . App::getInstance()->getTable('Platform')->platIdByName($plat)->url . "\" class=\"cat\" alt=\"" . $plat . "\" >" . $plat . "</a>";
                     }
                     ?>	
 					</span>

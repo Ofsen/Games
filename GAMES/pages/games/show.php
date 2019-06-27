@@ -12,6 +12,7 @@ if(isset($_SESSION['auth'])) {
 	$id_user = htmlspecialchars($_SESSION['auth']);
 	$check = App::getInstance()->getTable('Achat')->query("SELECT gamekey FROM achat WHERE id_user = $id_user AND id_game = $id_game");
 }
+
 if ($game === false) {
 	$app->notFound();
 }
@@ -27,7 +28,7 @@ $app->setTitle($game->titre);
             <?php
             $platsName = explode(',',$game->platform);
             foreach($platsName as $plat) {
-                echo "<a href=\"?p=games.platform&id=" . App::getInstance()->getTable('Platform')->platIdByName($plat)->id . "\" class=\"cat\" alt=\"" . $plat . "\" >" . $plat . "</a>";
+                echo "<a href=\"" . App::getInstance()->getTable('Platform')->platIdByName($plat)->url . "\" class=\"cat\" alt=\"" . $plat . "\" >" . $plat . "</a>";
             }
             ?>
         </span>
@@ -48,7 +49,7 @@ $app->setTitle($game->titre);
 		<span>Catégorie(s) </span>
 		<ul class="cats">
 			<?php foreach($cat as $c): ?>
-			<li><a style="font-weight:bold" href="?p=games.cats&id=<?= $c->id; ?>"><?= $c->nom; ?></a></li>
+			<li><a style="font-weight:bold" href="<?= $c->url; ?>"><?= $c->nom; ?></a></li>
 			<?php endforeach; ?>
 		</ul>
 	</div>

@@ -106,7 +106,7 @@ if(empty($_SESSION)) {
 			</div>
 		</form>
 		<p style="display: block; text-align:center; font-size: 0.8em; padding: 0.5em 0;">Pas encore inscrit ? <a href="index.php?p=signup" style="color: #007cb6;">s'inscrire</a></p>
-		<div id="error" style="display:none;color:#fff;max-width:17.456875em" class="danger"></div>
+		<div id="error" style="display:none;" class="danger"></div>
 	</div>
 	<?php } ?>
 	</div>

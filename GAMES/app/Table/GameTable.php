@@ -51,6 +51,12 @@ class GameTable extends Table {
 				GROUP BY games.dat DESC", [$plat_id]);
 	}
 
+	/**
+	 * Récupère les dernièrs jeux de la catégorie demandé
+	 * 
+	 * @param $cat_id int
+	 * @return array
+	 */
 	public function lastByCat($cat_id) {
 		return $this->query("
 				SELECT games.id, games.titre, games.img, games.descr, GROUP_CONCAT(cats.nom) as cat, GROUP_CONCAT(platforms.nom) as platform

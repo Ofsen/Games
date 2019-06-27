@@ -31,7 +31,7 @@
                     <?php
                     $platsName = explode(',',$game->platform);
                     foreach($platsName as $plat) {
-                        echo "<a href=\"?p=games.platform&id=" . App::getInstance()->getTable('Platform')->platIdByName($plat)->id . "\" class=\"cat\" alt=\"" . $plat . "\" >" . $plat . "</a>";
+                        echo "<a href=\"" . App::getInstance()->getTable('Platform')->platIdByName($plat)->url . "\" class=\"cat\" alt=\"" . $plat . "\" >" . $plat . "</a>";
                     }
                     ?>
                     </div>

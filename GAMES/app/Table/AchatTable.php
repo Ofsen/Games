@@ -7,6 +7,11 @@ class AchatTable extends Table {
 
     protected $table = 'achat';
 
+    /**
+     * Récupère les jeux qui que l'utilisateur à acheté
+     * 
+     * @return object
+     */
     public function myGames() {
         return $this->query("
             SELECT games.id, games.titre, games.img, games.descr, games.dev, games.dat, GROUP_CONCAT(platforms.nom) as platform

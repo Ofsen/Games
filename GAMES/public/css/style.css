@@ -675,7 +675,7 @@ td.acts {
     padding: 1em;
     width: 100%;
     text-align: center;
-    margin: 1em 0;
+    margin: 1em auto;
 }
 
 .header .container .nav .nav-mobile, .header .container .nav .nav-m-l {
@@ -873,13 +873,22 @@ td.acts {
     color: #fff;
     max-width: 95.5%;
     margin: 1em 0 0 0 
-} 
+}
+
+.danger, .warn, .green {
+    color:#fff;
+    max-width:17.456875em
+}
 
 /* MEDIA */
 
 @media only screen and (max-width: 1340px) {
     .cont .posts .post .inner-post {
         width: 100%;
+    }
+
+    .signup {
+        width: 45vw
     }
 }
 
@@ -910,6 +919,10 @@ td.acts {
     .cont .cats ul {
         flex-direction: column
     }
+
+    .signup {
+        width: 80vw
+    }
 }
 
 @media only screen and (max-width: 675px) {
@@ -923,13 +936,52 @@ td.acts {
     }
 }
 
+@media only screen and (max-width: 500px) {
+    .header .container .logo {
+        width: 100%
+    }
+
+    .header .container .nav {
+        margin-top: 1.5em;
+    }
+
+    .header .container .logo .logo-img {
+        display: block;
+        text-align: center;
+    }
+
+    .header .container .logo .search {
+        height: 3.125em;
+        position: unset;
+        padding-top: 1.5em;
+        width: 100%
+    }
+
+    .header .container .logo .search form {
+        display: flex;
+        flex-direction: row
+    }
+
+    .header .container .logo .search input[type = 'text'] {
+        position: unset
+    }
+
+    .header .container .logo .search button {
+        top: unset
+    }
+
+    .cont .posts .post .inner-post .details .head .cats {
+        display: none
+    }
+}
+
 @media only screen and (max-width: 460px) {
     .header .container, .cont, .edit-img {
         width: 95vw
     }
 
-    .header .container .logo .search {
-        display: none;
+    .header .container .logo {
+        display: block
     }
 
     .header .container .nav {
@@ -952,6 +1004,50 @@ td.acts {
 
     ul.admin {
         position: unset
+    }
+
+    .signup form.add {
+        background: none;
+        padding: 0;
+    }
+
+    .login {
+        padding: unset;
+        top: 0;
+        left: 0;
+        transform: unset;
+        width: 100%;
+        height: 100%
+    }
+    
+    .login h4 {
+        padding: 1em;
+    }
+
+    .login hr {
+        margin-left: 1.5em
+    }
+
+    .login form#loginForm {
+        padding: 0 1.5em;
+    }
+
+    .login form#loginForm .input-field input {
+        border-bottom: 2px solid #a0a0a0;
+        padding: 0.75em 0em;
+        width: 100%;
+        border-left: none;
+        border-top: none;
+        border-right: none;
+    }
+
+    .danger, .warn, .green {
+        width: unset;
+        max-width: unset;
+    }
+
+    .details .head .cat {
+        display: none
     }
 }
 
