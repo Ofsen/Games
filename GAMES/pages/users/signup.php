@@ -60,14 +60,15 @@ if(empty($_SESSION)) {
     header('Location:index.php');
 }
 ?>
-
-<h4>Inscription</h4>
-<hr>
-<form method="post" class="add">
-    <?= $form->input('username','Pseudo'); ?>
-    <?= $form->input('password','Mot de passe',['type' => 'password']); ?>
-    <?= $form->input('passC','Confirmer le mot de passe', ['type' => 'password']); ?>
-    <?= $form->input('email', 'E-mail', ['type' => 'email']); ?>
-    <?= $form->input('emailC', 'Confirmer d\'E-mail',['type' => 'email']); ?>
-    <button type="submit" name="action">S'Inscrire</button>
-</form>
+<div class="signup">
+    <h4>Inscription</h4>
+    <hr>
+    <form method="post" class="add">
+        <?= $form->input('username','Pseudo'); ?>
+        <?= $form->input('password','Mot de passe',['type' => 'password']); ?>
+        <?= $form->input('passC','Confirmer le mot de passe', ['type' => 'password']); ?>
+        <?= $form->input('email', 'E-mail', ['type' => 'email']); ?>
+        <?= $form->input('emailC', 'Confirmer d\'E-mail',['type' => 'email']); ?>
+        <button type="submit" name="action">S'Inscrire</button>
+    </form>
+</div>

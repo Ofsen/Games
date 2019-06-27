@@ -394,6 +394,18 @@ hr {
     color: #111;
 }
 
+/* Sign up page */
+
+.signup {
+    width: 35vw;
+    margin: 0 auto;
+}
+
+.signup form.add {
+    background: #151515;
+    padding: 1em 1.75em
+}
+
 /* Single article */
 
 .single .head {
@@ -513,6 +525,10 @@ ul.cats li a {
     color: #007cb6
 }
 
+ul.cats li a:hover {
+    color: white;
+}
+
 /* Admin */
 
 table {
@@ -586,7 +602,7 @@ a.edit {
 }
 
 .edit-img {
-    width: 85vw;
+    width: 65vw;
     height: 20em;
     background-size: cover;
     background-repeat: no-repeat;
@@ -614,6 +630,11 @@ td.acts {
     display: flex;
     justify-content: space-around;
     flex-direction: row;
+}
+
+.adminAdd {
+    width: 65vw;
+    margin: 0 auto;
 }
 
 /* ADD */

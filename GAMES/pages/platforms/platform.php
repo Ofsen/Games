@@ -48,7 +48,7 @@ $games = $app->getTable('Game')->lastByPlat($_GET['id']);
 	</div>
 
 	<div class="cats">
-	<h4>LES PLATFORMS</h4>
+	<h4>LES PLATEFORMES</h4>
 	<hr>
 		<ul>
 			<?php foreach ($plats as $ps): ?>

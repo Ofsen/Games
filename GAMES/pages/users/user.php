@@ -18,7 +18,7 @@ if(!empty($_SESSION)) {
         $adr = $userTable->adresse;
 
         $allow = false;
-        if($_SESSION['auth'] === htmlspecialchars($_GET['id']) || $user->find($_SESSION['auth'])->admin === "1") {
+        if($_SESSION['auth'] === htmlspecialchars($_GET['id'])) {
             $allow = true;
         }
 

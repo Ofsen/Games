@@ -41,7 +41,7 @@ if(!empty($_POST['srchfield'])) {
         <?php 
         endforeach; 
     } else {
-        echo "<p>Aucun jeu trouvé.</p>";
+        echo "<p style=\"display:block;width:100%;text-align:center\">Aucun jeu trouvé.</p>";
     } 
     ?>
     </div>

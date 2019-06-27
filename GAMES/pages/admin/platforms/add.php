@@ -61,14 +61,15 @@ if (isset($_POST['action'])) {
 $form = new \App\HTML\GamesForm($_POST);
 
 ?>
+<div class="adminAdd">
+	<h4>Nouvelle platform</h4>
+	<hr>
 
-<h4>Nouvelle platform</h4>
-<hr>
-
-<form method="post" class="add" enctype="multipart/form-data">
-		<?= $form->input('nom', 'Titre'); ?>
-		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
-	<div class="row">
-		<button class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder</button>
-	</div>
-</form>
+	<form method="post" class="add" enctype="multipart/form-data">
+			<?= $form->input('nom', 'Titre'); ?>
+			<?= $form->input('img', 'Image', ['type' => 'file']); ?>
+		<div class="row">
+			<button class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder</button>
+		</div>
+	</form>
+</div>

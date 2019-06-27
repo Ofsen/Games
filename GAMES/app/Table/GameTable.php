@@ -92,7 +92,7 @@ class GameTable extends Table {
 				FROM games 
 				LEFT JOIN game_plat ON games.id = game_plat.game_id
 				LEFT JOIN platforms ON plat_id = platforms.id
-				WHERE games.titre LIKE '%$key%' OR games.descr LIKE '%$key%' OR games.dev LIKE '%$key%'
+				WHERE games.titre LIKE '%$key%' OR games.descr LIKE '%$key%' OR games.dev LIKE '%$key%' OR platforms.nom LIKE '%$key%'
 				GROUP BY games.id DESC");
 	}
 }

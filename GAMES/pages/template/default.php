@@ -18,7 +18,10 @@ if(empty($_SESSION)) {
     <link href="../public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<!--	 JS		 -->
 	<script src="../public/js/main.js"></script>
-	<script src="../public/js/jquery.min.js"></script>		
+	<script src="../public/js/jquery.min.js"></script>
+	<!--	Favicon	-->
+	<link rel="shortcut icon" href="../public/img/res/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../public/img/res/favicon.ico" type="image/x-icon">
 </head>
 <body>
 	<div id="large">
@@ -41,7 +44,7 @@ if(empty($_SESSION)) {
 				<ul class="nav-l">
 					<li><a href="index.php">Index</a></li>
 					<li><a href="index.php?p=games">Jeux</a></li>
-					<li><a href="index.php?p=platforms">Consoles</a></li>
+					<li><a href="index.php?p=platforms">Plateformes</a></li>
 					<li><a href="index.php?p=cats">Catégories</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>
@@ -73,7 +76,7 @@ if(empty($_SESSION)) {
 					<hr>
 					<li><a href="index.php">Index</a></li>
 					<li><a href="index.php?p=games">Jeux</a></li>
-					<li><a href="index.php?p=platforms">Consoles</a></li>
+					<li><a href="index.php?p=platforms">Plateformes</a></li>
 					<li><a href="index.php?p=cats">Catégories</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>
@@ -102,6 +105,7 @@ if(empty($_SESSION)) {
 				<button type="submit" id="submit" name="action">Login</button>
 			</div>
 		</form>
+		<p style="display: block; text-align:center; font-size: 0.8em; padding: 0.5em 0;">Pas encore inscrit ? <a href="index.php?p=signup" style="color: #007cb6;">s'inscrire</a></p>
 		<div id="error" style="display:none;color:#fff;max-width:17.456875em" class="danger"></div>
 	</div>
 	<?php } ?>

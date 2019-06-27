@@ -1,5 +1,5 @@
 <div class="cats">
-	<h4>LES PLATFORMS</h4>
+	<h4>LES PLATEFORMES</h4>
 	<hr>
 	<ul>
 		<?php foreach (App::getInstance()->getTable('Platform')->threePlats() as $plat): ?>

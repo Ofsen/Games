@@ -89,7 +89,7 @@ if (isset($_POST['action'])) {
 $form = new \App\HTML\GamesForm($plat);
 
 ?>
-
+<div class="adminAdd">
 <h4>Modifier "<?= $plat->nom; ?>"</h4>
 <hr>
 <form method="post" class="edit" enctype="multipart/form-data">
@@ -98,3 +98,4 @@ $form = new \App\HTML\GamesForm($plat);
 		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
 		<button class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder</button>
 </form>
+</div>

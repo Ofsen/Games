@@ -104,29 +104,30 @@ $cats = $app->getTable('Cat')->extract('id', 'nom');
 $form = new \App\HTML\GamesForm($_POST);
 
 ?>
+<div class="adminAdd">
+	<h4>Nouveau jeu</h4>
+	<hr>
 
-<h4>Nouveau jeu</h4>
-<hr>
-
-<form method="POST" class="add" enctype="multipart/form-data">
-		<?= $form->input('titre', 'Titre'); ?>
-		<div class="addPlats">
-			<label>Plateformes</label>
-		<?php
-		foreach ($app->getTable('Platform')->all() as $plat) {
-			echo $form->input($plat->nom, $plat->nom, ['type' => 'checkbox', 'value' => $plat->id, 'name' => 'plats[]']); 
-		}?>
-		</div>
-		<div class="addPlats">
-			<label>Catégories</label>
-		<?php
-		foreach ($app->getTable('Cat')->all() as $cat) {
-			echo $form->input($cat->nom, $cat->nom, ['type' => 'checkbox', 'value' => $cat->id, 'name' => 'cats[]']); 
-		}?>
-		</div>
-		<?= $form->input('price', 'Prix', ['type' => 'number']); ?>
-		<?= $form->input('img', 'Image', ['type' => 'file']); ?>
-		<?= $form->input('descr', 'Déscription', ['type' => 'textarea']); ?>
-		<?= $form->input('dev', 'Développeur'); ?>
-		<button type="submit" name="action">Sauvegarder</button>
-</form>
+	<form method="POST" class="add" enctype="multipart/form-data">
+			<?= $form->input('titre', 'Titre'); ?>
+			<div class="addPlats">
+				<label>Plateformes</label>
+			<?php
+			foreach ($app->getTable('Platform')->all() as $plat) {
+				echo $form->input($plat->nom, $plat->nom, ['type' => 'checkbox', 'value' => $plat->id, 'name' => 'plats[]']); 
+			}?>
+			</div>
+			<div class="addPlats">
+				<label>Catégories</label>
+			<?php
+			foreach ($app->getTable('Cat')->all() as $cat) {
+				echo $form->input($cat->nom, $cat->nom, ['type' => 'checkbox', 'value' => $cat->id, 'name' => 'cats[]']); 
+			}?>
+			</div>
+			<?= $form->input('price', 'Prix', ['type' => 'number']); ?>
+			<?= $form->input('img', 'Image', ['type' => 'file']); ?>
+			<?= $form->input('descr', 'Déscription', ['type' => 'textarea']); ?>
+			<?= $form->input('dev', 'Développeur'); ?>
+			<button type="submit" name="action">Sauvegarder</button>
+	</form>
+</div>

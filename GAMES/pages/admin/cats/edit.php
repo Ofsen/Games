@@ -60,10 +60,11 @@ if (isset($_POST['action'])) {
 $form = new \App\HTML\GamesForm($cat);
 
 ?>
-
-<h4>Modifier "<?= $cat->nom; ?>"</h4>
-<hr>
-<form method="post" class="edit">
-		<?= $form->input('nom', 'Titre'); ?>
-		<button class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder</button>
-</form>
+<div class="adminAdd">
+	<h4>Modifier "<?= $cat->nom; ?>"</h4>
+	<hr>
+	<form method="post" class="edit">
+			<?= $form->input('nom', 'Titre'); ?>
+			<button class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder</button>
+	</form>
+</div>

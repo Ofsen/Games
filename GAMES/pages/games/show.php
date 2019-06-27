@@ -23,7 +23,7 @@ $app->setTitle($game->titre);
 	<div class="head" style="background-image: url(<?= $img = (empty($game->img)) ? "./img/game/default.jpg" : $game->img; ?>);">
 		<h4><?= $game->titre; ?></h4>
 		<hr>
-		<span>Platform(s) :
+		<span>Plateforme(s) :
             <?php
             $platsName = explode(',',$game->platform);
             foreach($platsName as $plat) {

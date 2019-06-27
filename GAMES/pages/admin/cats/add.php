@@ -47,7 +47,7 @@ if (isset($_POST['action'])) {
 $form = new \App\HTML\GamesForm($_POST);
 
 ?>
-
+<div class="adminAdd">
 <h4>Nouvelle catégorie</h4>
 <hr>
 
@@ -57,3 +57,4 @@ $form = new \App\HTML\GamesForm($_POST);
 		<button class="btn waves-effect waves-light" type="submit" name="action">Sauvegarder</button>
 	</div>
 </form>
+</div>
