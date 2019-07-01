@@ -32,6 +32,8 @@ if ($page === 'home') {
 	require ROOT . '/pages/users/signup.php';
 } elseif($page === 'user') {
 	require ROOT . '/pages/users/user.php';
+} elseif($page === 'contact') {
+	require ROOT . '/pages/contact.php';
 } elseif($page === '403') {
 	require ROOT . '/pages/errors/403.php';
 } elseif($page === 'search') {

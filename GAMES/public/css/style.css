@@ -288,6 +288,14 @@ hr {
     line-height: 2.5em;
 }
 
+.cont .single .desc ul.contact {
+    width:40%; margin: 0 auto
+}
+
+.cont .single .desc ul.contact li p span {
+    float: right
+}
+
 .more {
     display: block;
     background: #282828;
@@ -890,6 +898,10 @@ td.acts {
     .signup {
         width: 45vw
     }
+
+    .cont .single .desc ul.contact {
+        width: 60%
+    }
 }
 
 @media only screen and (max-width: 964px) {
@@ -923,6 +935,10 @@ td.acts {
     .signup {
         width: 80vw
     }
+
+    .cont .single .desc ul.contact {
+        width: 80%
+    }
 }
 
 @media only screen and (max-width: 675px) {
@@ -933,6 +949,10 @@ td.acts {
 
     .cont .posts .post .inner-post .details .head h5 a {
         font-size: 1em
+    }
+
+    .cont .single .desc ul.contact {
+        width: 100%
     }
 }
 

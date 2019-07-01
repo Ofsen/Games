@@ -46,7 +46,7 @@ if(empty($_SESSION)) {
 					<li><a href="index.php?p=games">Jeux</a></li>
 					<li><a href="index.php?p=platforms">Plateformes</a></li>
 					<li><a href="index.php?p=cats">Catégories</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="index.php?p=contact">Contact</a></li>
 				</ul>
 				<ul class="nav-r">
 					<?php 
@@ -78,7 +78,7 @@ if(empty($_SESSION)) {
 					<li><a href="index.php?p=games">Jeux</a></li>
 					<li><a href="index.php?p=platforms">Plateformes</a></li>
 					<li><a href="index.php?p=cats">Catégories</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="index.php?p=contact">Contact</a></li>
 				</ul>
 			</div>
 

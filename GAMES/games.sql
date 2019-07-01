@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 27 juin 2019 à 21:04
+-- Généré le :  lun. 01 juil. 2019 à 13:58
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -207,16 +207,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `adresse` text,
   `admin` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `img`, `email`, `nom`, `prenom`, `adresse`, `admin`) VALUES
-(1, 'demo', '89e495e7941cf9e40e6980d14a16bf023ccd4c91', './img/user/2bffc66e750ce60107ae3a529ebcf1163f7414e29e38e8270b265758e50ebac2.jpg', 'ofsensmailbox@gmail.com', 'Ouerdane', 'Ghiles', 'CitÃ© 150 logement, batiment G, nÂ°113', 1),
-(2, 'Ofsen', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', './img/user/default.jpg', 'damogenya@gmail.com', 'Yanis', NULL, 'Tizi Ouzou', 0),
-(3, 'Moh', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', './img/user/default.jpg', 'Moh@gmail.com', NULL, NULL, NULL, 0);
+(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', './img/user/2bffc66e750ce60107ae3a529ebcf1163f7414e29e38e8270b265758e50ebac2.jpg', 'ofsensmailbox@gmail.com', 'Ad', 'Min', 'Inside a processor', 1),
+(2, 'Ofsen', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', './img/user/default.jpg', 'damogenya@gmail.com', 'Yanis', 'Ouerdane', 'CitÃ© 150 logements, bÃ¢timent G, NÂ°113', 0),
+(3, 'Moh', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', './img/user/default.jpg', 'Moh@gmail.com', 'Slimi', 'Mohamed', 'Tizi Ouzou', 0),
+(4, 'Mohand', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', './img/user/default.jpg', 'Mohand@gmail.com', 'Ourad', 'Mohand', 'Azazga', 0),
+(5, 'Samy', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', './img/user/default.jpg', 'Samy@gmail.com', 'Boukdir', 'Samy Slimane', 'Alger', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
