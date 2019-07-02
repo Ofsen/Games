@@ -1072,7 +1072,7 @@ td.acts {
 }
 
 @media only screen and (max-width: 256px) {
-    #large {
+    /*#large {
         display: none;
     }
 
@@ -1088,5 +1088,11 @@ td.acts {
         padding: 1em;
         text-align: center;
         color: #fff
+    }*/
+    ul.nav-r {
+        margin: 0 !important;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 1em;
     }
 }

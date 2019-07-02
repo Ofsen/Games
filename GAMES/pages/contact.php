@@ -4,7 +4,7 @@
             <h4>CONTACT</h4>
             <hr>
             <p>
-                Ce site est un projet de fin de cycle entre 3 étudiants de l'université Mouloud Mammeri de Tizi Ouzou.
+                Ce site est un projet de fin de cycle entre 4 étudiants de l'université Mouloud Mammeri de Tizi Ouzou.
             </p>
             <p>
                 Vous voulez nous contacter ? nos e-mails sont :

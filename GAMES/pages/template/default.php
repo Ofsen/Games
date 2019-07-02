@@ -90,7 +90,7 @@ if(empty($_SESSION)) {
 	</div>
 
 	<div class="footer">
-		Build with <i class="fas fa-heart"></i> by <a href="http://github.com/ofsen">@_ofsen & Co.</a> | All rights reserved
+		Build with <i class="fas fa-heart"></i> by <a href="http://github.com/ofsen/games">@_ofsen & Co.</a> | All rights reserved
 	</div>
 
 	<?php if(empty($_SESSION)) { ?>
